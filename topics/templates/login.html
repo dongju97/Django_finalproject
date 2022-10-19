@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-floating mb-3">
+    <input style="width: 300px; height: 24px; margin: auto;" type="email" class="form-control" id="input-email" placeholder="name@example.com">
+    <label style="font-size: 13px; padding: 4px 10px; margin-left: 30px; margin-top: 2px;" for="input-email">휴대폰 번호 또는 이메일 주소</label>
+  </div>
+  
+  <div class="form-floating mb-3">
+    <input style="width: 300px; height: 24px; margin: auto;" type="text" class="form-control" id="input-name" placeholder="name@example.com">
+    <label style="font-size: 13px; padding: 4px 10px; margin-left: 30px; margin-top: 2px;" for="input-name">이름</label>
+  </div>
+  
+  <div class="form-floating mb-3">
+    <input style="width: 300px; height: 24px; margin: auto;" type="text" class="form-control" id="input-nickname" placeholder="name@example.com">
+    <label style="font-size: 13px; padding: 4px 10px; margin-left: 30px; margin-top: 2px;" for="input-nickname">닉네임</label>
+  </div>
+  
+  <div class="form-floating mb-3">
+    <input style="width: 300px; height: 24px; margin: auto;" type="text" class="form-control" id="input-password" placeholder="name@example.com">
+    <label style="font-size: 13px; padding: 4px 10px; margin-left: 30px; margin-top: 2px;" for="input-password">비밀 번호</label>
+  </div>
+  
+  <button id="join-button" style="width: 300px; height: 32px; margin: auto; font-size: 14px; font-weight: bolder; margin-top: 8px;" type="button" class="btn btn-primary">가입</button>
+{% endblock content %}
+
