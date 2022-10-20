@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,9 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="/path/to/jquery.easy-pie-chart.js"></script>
-    
-    <!-- Google Material icon -->
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
     <title>Hello, world!</title>
     
@@ -33,7 +31,9 @@
       
     </script>
     <style>
-
+      .container{
+        max-width: 980px;
+      }
       .body {
         
         margin: none;
@@ -43,18 +43,16 @@
         align-items: center;
       }
 
-      .container {
+      /* .container {
         
-        padding-top: 80px;
         display: flex;
-        flex-direction: column-reverse;
-        width: 100%;
-        justify-content: start;
+        flex-direction: column;
+        /* width: 100%; */
+        /* justify-content: start;
         font-size: 14px;
-        background-color:#FAFAFA padding: 0;
-        margin: 0, auto;
-
-      }
+        background-color:#FAFAFA;
+        padding-top: 40px;
+    } */ 
 
       .left-body {
         width: 100%;
@@ -70,21 +68,18 @@
         margin-bottom:30px;
       }
 
-      .feed-box {
-        border: solid 1px rgb(202, 202, 202);
-        background-color: white;
-        margin-bottom: 25px;
-        
-      }
 
       .profile {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column-reverse;
+        align-items: start;
       }
 
       .profile-id {
-        font-weight: bold;
+
+        font-weight: 1000;
+        font-size: 30px;
+        padding :8px
       }
 
       .profile-name {
@@ -108,75 +103,116 @@
       .profile-text {
         flex-direction: column;
         text-align: left;
-        height: 100px;
+        height: 0px;
       }
 
-      #feed-img {
+
+      #box1{
+        border-radius: 30px;
+        background-color: white;
+        box-shadow: 5px 5px rgb(235, 235, 235);
+        margin-top: 60px;
+      }
+
+      .box2{
+        font-size:40px;
         width: 100%;
-      }
-
-      .icon {
+        left: 600px;
+        margin-bottom:30px;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        margin: 10px;
-      }
-
-      .like {
-        text-align: left;
-        margin: 10px;
-        font-size: 13px;
-      }
-
-      .feed-text {
-        text-align: left;
-        margin: 10px;
-      }
-
-      .comment {
-        text-align: left;
-        margin: 10px;
-      }
-
-      #input-comment {
-        box-shadow: none;
-        border: none;
-        border-top: solid 1px rgb(202, 202, 202);
-      }
-
-      .recommend-msg {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-left: 10px;
-        font-weight: bold;
-        margin-top: 10px;
-        margin-bottom: 7px;
-      }
-
-      #recommend-text {
-        color: grey;
-      }
-
-      #recommend-plus {
-        text-decoration: none;
-        color: black;
-      }
-
-      #follow {
-        text-decoration: none;
-        font-weight: bold;
-        color: rgb(70, 156, 255);
-      }
-
-      .recommend-lst {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         align-items: center;
       }
 
-   
+      .box2_1{
+        background-color: white;
+        border-radius: 50%;
+        width: 100%;
+        left: 600px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        box-shadow: 5px 5px rgb(235, 235, 235);
+        margin: 30px
+      }
+
+      .box2_2{
+
+        width: 100%;
+        left: 600px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        margin: 20px;
+        background-color: white;
+        box-shadow: 5px 5px rgb(235, 235, 235);
+        border-radius: 10%;
+        }
+
+      .pg1_box{
+        font-size: 30px;
+        padding: 15px;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+      }
+
+      .point_tag{
+        font-size: 25px;
+        margin-top: 20px;
+      }
+
+      .point{
+        font-size: 40px;
+        margin-top: 20px;
+      }
+
+      .profile_box{
+        display: flex;
+        justify-content: space-around; 
+        flex-direction: row; 
+        width: 500px; 
+        font-size: 22px; 
+        text-align: center; 
+        height: 200px
+      }
+
+      .under_profile_box{
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .pt{
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .pt div{
+        flex:1;
+      }
+
+      .photo{
+        display: flex; 
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .photo div{
+        border: 1px solid rgb(96, 157, 4);
+        width: 100px;
+        height: 200px;
+        font-size: 30px;
+        text-align: center;
+        background-color: white;
+        }
+
 
       @media (prefers-reduced-motion: no-preference) {
         * {
@@ -186,152 +222,118 @@
     </style>
   </head>
 
-  <body>
+  <body style="background-color: rgba(226, 237, 226, 0.575);">
     <!-- 바디 영역 -->
     <div class="body">
       <div class="container">
-        <div class="left-body">
-          <div class="feed-box">
-            <div class="profile">
-              <div class="profile-img-box">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
-              </div>
-              <div class="profile-id" font-size="30px;">
-                춘배
-              </div>
-            </div>
-
-            <div class="feed-img">
-              <img id="feed-img" src="https://static-storychat.pstatic.net/2020/9/1/47/208797_hm2fj34m3df60.jpg">
-            </div>
-
-            <div class="icon">
-              <div>
-                <span class="material-icons-outlined">favorite_border</span>
-                <span class="material-icons-outlined">chat_bubble_outline</span>
-                <span class="material-icons-outlined">send</span>
-              </div>
-              <div>
-                <span class="material-icons-outlined">bookmark_border</span>
-              </div>
-            </div>
-
-            <div class="like">
-              django
-              <b>외 19명</b>이 좋아합니다
-            </div>
-
-            <div class="feed-text">
-              <b>jollyn</b>
-              이건 마치 알고리즘 보는 나의 모습
-            </div>
-
-            <div class="comment">
-              <div>
-                <b>기덕</b>
-                장고 화이팅
-              </div>
-              <div>
-                <b>재명</b>
-                알고리즘 화이팅
-              </div>
-              <div>
-                <b>이성</b>
-                파이썬 화이팅
-              </div>
-            </div>
-
-            <div class="input-comment">
-              <input id="input-comment" type="text" class="form-control" placeholder="댓글 달기...">
-            </div>
-          </div>
-        </div>
-
-        <div class="right-body">
-          <div class="profile">
-              <div class="profile-img-box" style="width: 100px; height: 100px;">
-              <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
-              </div>
-            <div class="profile-text">
-              <div class="profile-id" style="margin-left:20px;">
-                정영철
-              </div>
-              <div class="profile-name" style="color: grey; margin-left:20px;">
-                정영철's id
-              </div>
-            </div>
-          </div>
         
 
-          <div class="recommend-msg">
-            <div id="recommend-text">회원님을 위한 추천</div>
-            <div class="chart" data-percent="73" data-scale-color="#ffb400">73%</div>
-          </div>
-
-          <div class=" recommend-lst">
-            <div class="profile">
-              <div class="profile-img-box" style="width: 35px; height: 35px;">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
-              </div>
-
-              <div class="profile-text">
+        <div class="right-body">
+            <div id="box1">
                 <div class="profile-id">
-                  jollyn
+                    eu_nning
                 </div>
-                <div class="profile-name" style="color: grey;">
-                  민정님 외 4명이 팔로우합니다
-                </div>
-              </div>
-            </div>
-            <a id="follow" "href=" #"=" #""=" #" "">팔로우</a>
-          </div>
-          <div class=" recommend-lst">
-            <div class="profile">
-              <div class="profile-img-box" style="width: 35px; height: 35px;">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
-              </div>
 
-              <div class="profile-text">
-                <div class="profile-id">
-                  jollyn
-                </div>
-                <div class="profile-name" style="color: grey;">
-                  민정님 외 4명이 팔로우합니다
-                </div>
-              </div>
-            </div>
-            <a id="follow" "href=" #"=" #""=" #" "">팔로우</a>
-          </div>
-          <div class=" recommend-lst">
-            <div class="profile">
-              <div class="profile-img-box" style="width: 35px; height: 35px;">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
-              </div>
+                <div class="profile" style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <div class="profile-img-box" style="width: 160px; height: 160px;">
+                        <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
+                    </div>
+                
+                    <div class="profile_box">
+                        <div class="under_profile_box" style=" width: 25%;">
+                            
+                            <div class="point">
+                                50p
+                            </div>
+                            <div class="point_tag">
+                                내포인트
+                            </div>
+                        </div>
 
-              <div class="profile-text">
-                <div class="profile-id">
-                  jollyn
-                </div>
-                <div class="profile-name" style="color: grey;">
-                  민정님 외 4명이 팔로우합니다
-                </div>
-              </div>
-            </div>
-            <a id="follow" "href=" #"=" #""=" #" "">팔로우</a>
-          </div>
+                        <div class="under_profile_box"  style="width: 25%;">
+                            <div class="point">
+                                50p
+                            </div>
+                            <div class="point_tag">
+                                탄소 세이브
+                            </div>
+                            
+                        </div>
 
-         
+                        <div  class="under_profile_box" style="width: 150px;">
+                            <div class="point">
+                                <img src="{% static 'images/새싹.png' %}" height="60px" width="70px">
+                            </div>
+                            <div class="point_tag">
+                                탄소 등급
+                            </div>
+                        
+                        </div>
+                    </div>         
+                </div>
+            
+    
+            </div>
         </div>
-      </div>
 
-      <!-- Optional JavaScript; choose one of the two! -->
+        <!-- ---------------------------------------------------------------------------- -->
 
-      <!-- Option 1: Bootstrap Bundle with Popper -->
+        <div class="box2">
+
+            <div class="box2_1">달성량</div>
+
+            <div class="box2_2">그림</div>
+            
+        </div>
+
+
+        <!-- ---------------------------------------------------------------------------- -->
+        <div class="left-body">
+
+
+            <div class="profile-id" style="background-color: white;">
+              나의 기록
+            </div>
+            <div class="pt">
+                <div class="photo">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                </div>
+
+                <div class="photo">
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </div>
+
+                <div class="photo">
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                </div>
+
+            </div>
+  
+           
+              
+
+        <div>
+            
+<!-- -------------------------------------------------------------------------------------------------- -->
+        </div>
+
+
+    </div>
+
+
+      <!— Optional JavaScript; choose one of the two! —>
+
+      <!— Option 1: Bootstrap Bundle with Popper —>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-      <!-- Option 2: Separate Popper and Bootstrap JS -->
-      <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> -->
+      <!— Option 2: Separate Popper and Bootstrap JS —>
+      <!— <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> —>
     </body>
-
+    {% endblock content %}
   </html>
-  {% endblock content %}
