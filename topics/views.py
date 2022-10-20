@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 def main(request):
     return render(request, "main.html")
 
+
 def login(request):
     return render(request, "login.html")
 
@@ -14,3 +15,7 @@ def graph(request):
 
 def feed(request):
     return render(request, "feed.html")
+
+
+def point(request):
+    return render(request, "point.html")
