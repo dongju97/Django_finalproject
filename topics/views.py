@@ -6,3 +6,11 @@ def main(request):
 
 def login(request):
     return render(request, "login.html")
+
+
+def graph(request):
+    return render(request, "graph.html")
+
+
+def feed(request):
+    return render(request, "feed.html")
