@@ -10,5 +10,6 @@ urlpatterns = [
     path('feed/', views.feed, name="feed"),
     path('point/', views.point, name="point"),
     path('write/', views.write, name="write"),
+    path('check/', views.check, name="check"),  
     
 ]

@@ -23,4 +23,8 @@ def point(request):
 
 def write(request):
     return render(request, "write.html")
+
+
+def check(request):
+    return render(request, "check.html")
     
