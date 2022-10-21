@@ -19,3 +19,8 @@ def feed(request):
 
 def point(request):
     return render(request, "point.html")
+
+
+def write(request):
+    return render(request, "write.html")
+    

@@ -9,5 +9,6 @@ urlpatterns = [
     path('graph/', views.graph, name="graph"),
     path('feed/', views.feed, name="feed"),
     path('point/', views.point, name="point"),
+    path('write/', views.write, name="write"),
     
 ]

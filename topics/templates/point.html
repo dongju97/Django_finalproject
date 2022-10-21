@@ -2,10 +2,130 @@
 {% load static %}
 {% block content %}
 
+<head>
+    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/topics/point.css' %}">
+</head>
+
+
+<body>
+    <div id="box_1">
+        <div id="a">탄소 포인트 잔액</div>
+        <div id="b">1025P</div>        
+    </div>
+
+{% comment %} ------------------ {% endcomment %}
+
+    <div id="aa">
+        <div class="hall_p">
+            <div style="margin-top: 30px; width:60%; text-align:center;">나의 누적 포인트 내역</div>
+            <div style="margin-right: 0px; margin-top:30px; width:30%; text-align:center;">4050P</div>
+
+        </div>
+
+        <div style="padding: 0; margin:0;">
+            <img class="line" src="{% static 'images/선.png' %}">
+        </div>
+
+        <div class="pyo">
+            <div class="pyo_1">
+                <div class="title">대중교통 사용</div>
+                <div class="count">2050p</div>
+            </div>
+            <div class="pyo_1">
+                <div class="title">텀블러 사용</div>
+                <div class="count">1080p</div>
+            </div>
+            <div class="pyo_1">
+                <div class="title">장바구니 사용</div>
+                <div class="count">500p</div>
+            </div>
+
+        </div>
+    </div>
+
+    {% comment %} ---------------- {% endcomment %}
+
+    <div id="bb">
+        <div class="use_p">
+            <div>나의 포인트 사용 내역</div>
+        </div>
+
+        {% comment %}  {% endcomment %}
+        <div class="use_list">
+            <div>
+                <div id="day">
+                    9월 4일
+                </div>
+                <div class="content">
+                    <div class="content_1">
+                        <div id="imgg" style="width: 20%;">
+                            <img src="{% static 'images/텀블러.png' %}" width="90px" height="90px">
+                        </div>
+
+                        <div style="width: 66%; text-align: left; padding-top:40px">텀블러 사용</div>
+
+                        <div id="aaaa" style="width: 20%;padding-top:40px">+50P</div>
+                    </div>
+
+                    <div class="content_1">
+                        <div id="imgg" style="width: 20%;">
+                            <img src="{% static 'images/텀블러.png' %}" width="90px" height="90px">
+                        </div>
+
+                        <div style="width: 66%; text-align: left; padding-top:40px">텀블러 사용</div>
+
+                        <div id="aaaa" style="width: 20%;padding-top:40px">+50P</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+{% comment %}  {% endcomment %}
+
+<div class="use_list">
+    <div>
+        <div id="day">
+            9월 4일
+        </div>
+        <div class="content">
+            <div class="content_1">
+                <div id="imgg" style="width: 20%;">
+                    <img src="{% static 'images/텀블러.png' %}" width="90px" height="90px">
+                </div>
+
+                <div style="width: 66%; text-align: left; padding-top:40px">텀블러 사용</div>
+
+                <div id="aaaa" style="width: 20%;padding-top:40px">+50P</div>
+            </div>
+
+            <div class="content_1">
+                <div id="imgg" style="width: 20%;">
+                    <img src="{% static 'images/텀블러.png' %}" width="90px" height="90px">
+                </div>
+
+                <div style="width: 66%; text-align: left; padding-top:40px">텀블러 사용</div>
+
+                <div id="aaaa" style="width: 20%;padding-top:40px">+50P</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 
 
 
+
+
+    </div>
+
+
+</body>
 
 
 {% endblock content %}
