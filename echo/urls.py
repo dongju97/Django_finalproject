@@ -7,7 +7,7 @@ from topics import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('topics/', include('topics.urls')),
+    path('', include('topics.urls')),
     path('detection/', include('detection.urls')),
     path('', views.main, name='main'),  # '/' 에 해당되는 path
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

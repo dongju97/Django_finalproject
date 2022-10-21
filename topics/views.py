@@ -2,6 +2,26 @@ from logging import exception
 from django.shortcuts import render, redirect
 from . models import User
 
+#페이지
+
+def graph(request):
+    return render(request, "pages/graph.html")
+
+
+def feed(request):
+    return render(request, "pages/feed.html")
+
+
+def point(request):
+    return render(request, "pages/point.html")
+
+
+def write(request):
+    return render(request, "pages/write.html")
+
+def popup(request):
+    return render(request, "pages/popup.html")
+
 # Create your views here.
 def main(request, pk):
     one = User.objects.get(pk=pk)
