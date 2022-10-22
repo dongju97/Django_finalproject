@@ -27,4 +27,12 @@ def write(request):
 
 def check(request):
     return render(request, "check.html")
+
+
+def goal(request):
+    return render(request, "goal.html")
+
+
+def graph_1(request):
+    return render(request, "graph_1.html")
     
