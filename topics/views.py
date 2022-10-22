@@ -5,6 +5,12 @@ from . models import User
 #페이지
 
 def graph(request):
+    london = [3.9,4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    tokyo =  [-3.2, 6.9, 9.5, 14.5, 30, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    context = {
+        'london' : london,
+        'tokyo' : tokyo,
+    }
     return render(request, "pages/graph.html")
 
 
