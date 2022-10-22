@@ -9,10 +9,6 @@ def login(request):
     return render(request, "login.html")
 
 
-def graph(request):
-    return render(request, "graph.html")
-
-
 def feed(request):
     return render(request, "feed.html")
 
@@ -33,6 +29,6 @@ def goal(request):
     return render(request, "goal.html")
 
 
-def graph_1(request):
-    return render(request, "graph_1.html")
+def graph(request):
+    return render(request, "graph.html")
     
