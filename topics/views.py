@@ -7,6 +7,9 @@ from . models import User
 def graph(request):
     return render(request, "pages/graph.html")
 
+def line(request):
+    return render(request, "pages/line.html")
+
 
 def feed(request):
     return render(request, "pages/feed.html")

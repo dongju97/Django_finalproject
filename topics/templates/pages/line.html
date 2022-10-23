@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 1. static 사용 -->
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 2. 사이트 html 하단 script 태그 위치 -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    
+    <!-- 3. css 속성 가져오기 -->
+    <link rel="stylesheet" href="{% static 'chart/css/line.css' %}">
+    
+    <style>
+        #container{
+            width:500px;
+            height:500px;
+        }
+
+    </style>
+</head>
+<body>
+	<!-- 4. 사이트 html 하단 figure 태그 -->
+	<figure class="highcharts-figure">
+      <div id="container"></div>
+      <p class="highcharts-description">
+      
+    </figure>
+    
+    <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
+    <!-- 6. script -->
+    <script>
+      Highcharts.chart('container', {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: '다회용품 이용횟수와 그에 따른 탄소 감축량'
+        },
+        subtitle: {
+          text: '환경을 사랑하는 당신 너무 멋져요'
+        },
+        xAxis: {
+          categories: ['Jan', 'Feb', 'Mar']
+        },
+        yAxis: {
+          title: {
+            text: 'Temperature'
+          },
+          labels: {
+            formatter: function () {
+              return this.value + '°';
+            }
+          }
+        },
+        tooltip: {
+          crosshairs: true,
+          shared: true
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              radius: 4,
+              lineColor: '#666666',
+              lineWidth: 1
+            }
+          }
+        },
+        series: [{
+          name: 'Tokyo',
+          marker: {
+            symbol: 'square'
+          },
+          data: [7.0, 6.9, 9.5, ]
+
+        }, {
+          name: 'London',
+          marker: {
+            symbol: 'diamond'
+          },
+          data: [{
+            y: 3.9,
+            marker: {
+              symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
+            }
+          }, 4.2, 5.7]
+        }]
+      });
+    </script>
+ 
+
+</body>
+</html>
