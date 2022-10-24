@@ -22,11 +22,17 @@ def point(request):
     return render(request, "pages/point.html")
 
 
+def save(request):
+    return render(request, "pages/save.html")
+
+
 def write(request):
     return render(request, "pages/write.html")
 
+
 def popup(request):
     return render(request, "pages/popup.html")
+
 
 # Create your views here.
 def main(request, pk):
