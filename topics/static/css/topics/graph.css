@@ -1,9 +1,8 @@
 
-/* body{
-    margin-top: 100px;
-    font-family: 'Trebuchet MS', serif;
-    line-height: 1.6
-} */
+body{
+    /* background-color: rgb(42, 164, 69); */
+    background-color: rgba(195, 219, 200, 0.107);
+}
 
 #first{
     display: flex;
@@ -17,9 +16,12 @@
 
 .container{
     /* width: 980px; */
-    margin: 0;
-    margin-top: 100px;
-    width:100%;
+    margin: 0px;
+    margin-top: 30px;
+    width:815px;
+    background-color: white;
+    padding-top: 20px;
+    border-radius: 30px;
     
 }
 
@@ -31,21 +33,25 @@ ul.tabs{
 }
 
 ul.tabs li{
-    background: white;
-    color: rgb(0, 0, 0);
+    background: transparent;
+    color: rgb(28, 27, 27);
     display: inline-block;
     /* padding: 10px 15px; */
     cursor: pointer;
     font-size: 38px;
-    width: 30%;
+    width: 155px;
+    height: 75px;
     text-align: center;
-    border-radius: 10px;
+    border-bottom: 3px solid black;
+    margin-left: 63px;
+
 }
 
 ul.tabs li.current{
-    background:white;
-    color: rgb(255, 255, 255);
+    background:transparent;
+    color: rgb(0, 0, 0);
     font-size: 40px;
+    border-bottom: 8px solid black;
     /* margin-bottom: 40px; */
 }
 
@@ -62,6 +68,9 @@ ul.tabs li.current{
     padding: 0;
     
 }
+
+
+
 
 
 
@@ -121,7 +130,7 @@ ul.tabs li.current{
 .hall_p{
     /* border: 1px solid black; */
     height: 100px;
-    margin-top: 120px;
+    margin-top: 70px;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -206,3 +215,31 @@ ul.tabs li.current{
 }
 
 
+/*  */
+
+
+
+#graph{
+    font-size:60px;
+    width: 90%;
+    padding-left: 50px;
+    border-radius: 60px;
+    
+    
+  }
+  ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    
+}
+
+#aaaaa{
+    padding: 10px;
+    padding-top: 60px;
+    /* border: 1px solid black; */
+    border-radius: 40px;
+    margin: 40px;
+    margin-top: 80px;
+    background-color: white;
+}

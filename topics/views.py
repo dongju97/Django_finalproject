@@ -18,6 +18,11 @@ def feed(request):
     return render(request, "pages/feed.html")
 
 
+def feed_1(request):
+    return render(request, "pages/feed_1.html")
+
+
+
 def point(request):
     return render(request, "pages/point.html")
 
