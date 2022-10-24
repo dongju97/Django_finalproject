@@ -5,10 +5,13 @@ from . models import User
 #페이지
 
 def graph(request):
+    london = [3.9,4.2, 5.7]
+    tokyo =  [-3.2, 6.9, 9.5]
+    context = {
+        'london' : london,
+        'tokyo' : tokyo,
+    }
     return render(request, "pages/graph.html")
-
-def line(request):
-    return render(request, "pages/line.html")
 
 
 def feed(request):

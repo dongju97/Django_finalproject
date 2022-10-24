@@ -11,7 +11,6 @@ urlpatterns = [
     path('point/', views.point, name="point"),
     path('write/', views.write, name="write"),
     path('popup/', views.popup, name="popup"),
-    path('line/',views.line, name="line"),
     
     #로그인/회원가입
     path('main/<int:pk>', views.main, name="main"),

@@ -20,16 +20,25 @@
         $(document).ready(function(){
 	
             $('ul.tabs li').click(function(){
+                
                 var tab_id = $(this).attr('data-tab');
-        
+                
                 $('ul.tabs li').removeClass('current');
                 $('.tab-content').removeClass('current');
-        
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');
+             
+                
+              
             })
+
+            $("#TabMenu").tabs({
+              select: function(event, ui){
+                window.location.replace(ui.tab.hash);
+              }
+            });
         
-        })
+        });
     </script>
 
 
@@ -42,11 +51,11 @@
 <div id="first">
     <div class="container">
 
-        <div>
+        <div class="TabMenu">
         <ul class="tabs">
             <li class="tab-link current" data-tab="tab-1">텀블러</li>
-            <li class="tab-link" data-tab="tab-2">장바구니</li>
-            <li class="tab-link" data-tab="tab-3">다회용기</li>
+            <li class="tab-link " data-tab="tab-2">장바구니</li>
+            <li class="tab-link " data-tab="tab-3">다회용기</li>
 
         </ul>
         </div>
@@ -235,19 +244,14 @@
             marker: {
               symbol: 'square'
             },
-            data: [7.0, 6.9, 9.5, ]
+            data: {{tokyo}}
   
           }, {
             name: 'London',
             marker: {
               symbol: 'diamond'
             },
-            data: [{
-              y: 3.9,
-              marker: {
-                symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
-              }
-            }, 4.2, 5.7]
+            data: {{london}}
           }]
         });
       </script>
