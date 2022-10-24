@@ -24,7 +24,7 @@
             justify-content: center;
             position: fixed;
             width: 100%;
-            background-color: rgba(237, 250, 237, 0.575);
+            background-color: rgba(214, 225, 217, 0.278);
             /* border-bottom: solid 1px rgb(202, 202, 202); */
           }
     
@@ -65,9 +65,8 @@
     </style> {% block css %}{% endblock css %}
   </head>
 
-  <body style="background-color: rgba(226, 237, 226, 0.575);">
-    <nav class="navbar">
-
+  {% comment %} <body style="background-color: rgba(226, 237, 226, 0.575);"> {% endcomment %}
+    <body>
         <div class="navbar">
                
                 <button id="pencil_button" class="inline"><a href="{% url 'topics:write' %}"><img src="{% static 'images/pencil.png' %}" width="60" height="60"></a></button>

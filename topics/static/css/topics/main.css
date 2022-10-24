@@ -1,0 +1,273 @@
+
+.body {
+
+    margin-top: 0;
+  width: 980px;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(203, 221, 207, 0.107);
+
+}
+
+/* .container {
+  
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+/* justify-content: start;
+  font-size: 14px;
+  background-color:#FAFAFA;
+  padding-top: 40px;
+} */
+
+.left-body {
+  width: 100%;
+  /* min-width: 630px; */
+  margin: top 30px;
+  /* border: 1px solid black; */
+
+}
+
+.right-body {
+  font-size: 40px;
+  width: 100%;
+  left: 600px;
+  margin-bottom: 30px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: start;
+}
+
+.profile-id {
+
+  font-weight: 1000;
+  font-size: 40px;
+  padding: 8px;
+}
+
+.profile-name {
+  font-size: 12px;
+}
+
+.profile-img-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin: 10px 15px 10px 10px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-text {
+  flex-direction: column;
+  text-align: left;
+  height: 0;
+}
+
+#box1 {
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: 5px 5px rgb(235, 235, 235);
+  margin: 50px 70px;
+  padding: 40px;
+  margin-top: 90px;
+
+}
+
+.box2 {
+  font-size: 40px;
+  width: 100%;
+  left: 600px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box2_1 {
+  background-color: white;
+  border-radius: 50%;
+  width: 100%;
+  left: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 420px;
+  box-shadow: 5px 5px rgb(235, 235, 235);
+  margin: 30px 30px 30px 60px;
+}
+
+.box2_2 {
+
+  width: 100%;
+  left: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  height: 400px;
+  margin: 20px;
+  /* background-color: white;
+  box-shadow: 5px 5px rgb(235, 235, 235);
+  border-radius: 10%; */
+}
+
+.pg1_box {
+  font-size: 30px;
+  padding: 15px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.point_tag {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.point {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.profile_box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 500px;
+  font-size: 22px;
+  text-align: center;
+  height: 200px;
+}
+
+.under_profile_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pt {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+} 
+
+.pt div {
+  flex: 1;
+}
+
+
+
+
+.photo{
+  display:inline-block;
+  flex-direction: column;
+  justify-content: center;
+  border: 0.1px solid rgb(96, 157, 4);
+  width: 320px;
+  height: 320px;
+  font-size: 30px;
+  text-align: center;
+  background-color: white;
+ 
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+
+
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+ul.tabs{
+    list-style: none;
+    width: 136%;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tabs li{
+    background: none;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 38px;
+    background-color: rgb(234, 238, 232);
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* .container{
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    margin-right: 0px;
+    padding: 0px;
+} */
+
+.tabMenu{
+    display: flex;
+    justify-items: center;
+    width: 100%;
+}
+
+.tabs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* .tabs div{
+    width: 50%;
+} */
+
+ul.tabs li.current{
+    background: #5eac5d;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    /* margin-bottom: 40px; */
+}
+
+.tab-content{
+    display: none;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 40px;
+    
+}
+
+.tab-content.current{
+    display: inherit;
+    
+}
+
+
+
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+
+#tab-1{
+    padding: 0px;
+    /* border: 1px solid black; */
+}

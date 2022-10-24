@@ -34,7 +34,7 @@ ul.tabs li{
     background: white;
     color: rgb(0, 0, 0);
     display: inline-block;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     cursor: pointer;
     font-size: 38px;
     width: 30%;
@@ -52,13 +52,15 @@ ul.tabs li.current{
 .tab-content{
     display: none;
     background: #ffffff;
-    padding: 15px;
+    padding: 0;
     border-radius: 40px;
     
 }
 
 .tab-content.current{
     display: inherit;
+    padding: 0;
+    border: 1px solid black;
 }
 
 
@@ -197,3 +199,10 @@ ul.tabs li.current{
     /* justify-content: flex-end; */
 
 }
+
+.pt{
+    padding: 0px;
+    margin: 0px;
+}
+
+
