@@ -30,23 +30,136 @@
              
                 
               
-            })
-
-            $("#TabMenu").tabs({
-              select: function(event, ui){
-                window.location.replace(ui.tab.hash);
-              }
             });
         
         });
     </script>
-
+    <style>
+      #graph{
+        font-size:50px;
+        width: 80%;
+        padding-left: 140px;
+        
+      }
+      ul.tabs{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+    
+      ul.tabs li{
+        background: white;
+        color: rgb(0, 0, 0);
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 38px;
+        width: 30%;
+        text-align: center;
+        border-radius: 10px;
+    }
+    
+      ul.tabs li.current{
+        text-decoration: underline;
+        {% comment %} background:white; {% endcomment %}
+        color: rgb(255, 255, 255);
+        font-size: 40px;
+        /* margin-bottom: 40px; */
+    }
+    </style>
 
 </head>
 
 
 <body>
 
+  <figure class="highcharts-figure">
+    <div id="graph"></div>
+    <p class="highcharts-description">
+    
+  </figure>
+  
+  <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
+  <!-- 6. script -->
+  <script>
+    Highcharts.chart('graph', {
+      
+      chart: {
+        type: 'column',
+        style: {//차트 전체 스타일 지정
+          color: '#444',
+            fontFamily: 'notoSans',
+          fontWeight:'1000',
+          fontSize:'20px'
+        }
+      },
+      
+      title: {
+        style: {//차트 전체 스타일 지정
+          color: '#444',
+            fontFamily: 'notoSans',
+          fontWeight:'1000',
+          fontSize:'30px'
+        },
+        text: '이용횟수와 그에 따른 탄소 감축량'
+      },
+      subtitle: {
+        text: '환경을 사랑하는 당신 이만큼이나 탄소를 줄이셨군요'
+      },
+      xAxis: {
+        categories: ['텀블러', '장바구니', '다회용품'],
+        style: {//차트 전체 스타일 지정
+          color: '#444',
+            fontFamily: 'notoSans',
+          fontWeight:'1000',
+          fontSize:'30px'
+        }
+        
+      },
+      yAxis: {
+        title: {
+          text: '사용횟수/ 탄소 절감량'
+        },
+        labels: {
+          
+          formatter: function () {
+            return this.value + '°';
+          }
+        }
+      },
+      tooltip: {
+        crosshairs: true,
+        shared: true
+      },
+      plotOptions: {
+        spline: {
+          marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+          }
+        }
+      },
+      series: [{
+        
+        name: '이용횟수',
+        marker: {
+          symbol: 'square'
+        },
+        data: {{count}}
+
+      }, {
+        name: '탄소절감량',
+        marker: {
+          symbol: 'diamond'
+        },
+        data: [{
+          y: {{save.0}},}, {{save.1}}, {{save.2}}]
+      }]
+    });
+  </script>
+
+{% comment %} /graph {% endcomment %}
 
 <div id="first">
     <div class="container">
@@ -74,75 +187,7 @@
                 </div>
             </div> 
             
-            {% comment %} graph {% endcomment %}
-            <figure class="highcharts-figure">
-              <div id="graph"></div>
-              <p class="highcharts-description">
-              
-            </figure>
-            
-            <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
-            <!-- 6. script -->
-            <script>
-              Highcharts.chart('graph', {
-                chart: {
-                  type: 'column'
-                },
-                title: {
-                  text: '다회용품 이용횟수와 그에 따른 탄소 감축량'
-                },
-                subtitle: {
-                  text: '환경을 사랑하는 당신 너무 멋져요'
-                },
-                xAxis: {
-                  categories: ['Jan', 'Feb', 'Mar']
-                },
-                yAxis: {
-                  title: {
-                    text: 'Temperature'
-                  },
-                  labels: {
-                    formatter: function () {
-                      return this.value + '°';
-                    }
-                  }
-                },
-                tooltip: {
-                  crosshairs: true,
-                  shared: true
-                },
-                plotOptions: {
-                  spline: {
-                    marker: {
-                      radius: 4,
-                      lineColor: '#666666',
-                      lineWidth: 1
-                    }
-                  }
-                },
-                series: [{
-                  name: 'Tokyo',
-                  marker: {
-                    symbol: 'square'
-                  },
-                  data: [7.0, 6.9, 9.5, ]
-        
-                }, {
-                  name: 'London',
-                  marker: {
-                    symbol: 'diamond'
-                  },
-                  data: [{
-                    y: 3.9,
-                    marker: {
-                      symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
-                    }
-                  }, 4.2, 5.7]
-                }]
-              });
-            </script>
-         
-        {% comment %} /graph {% endcomment %}
+          
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트</div>
@@ -180,7 +225,7 @@
 
 {% comment %}  {% endcomment %}
 
-<div id="tab-2" class="tab-content current">
+<div id="tab-2" class="tab-content">
   <div class="hall_box">
       <div id ="a">
           <div id="tp_text">
@@ -191,73 +236,9 @@
           </div>
       </div> 
       
-      {% comment %} graph {% endcomment %}
 
-      
-      <figure class="highcharts-figure">
-        <div id="graph"></div>
-        <p class="highcharts-description">
-        
-      </figure>
-      
-      <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
-      <!-- 6. script -->
-      <script>
-        Highcharts.chart('graph', {
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: '다회용품 이용횟수와 그에 따른 탄소 감축량'
-          },
-          subtitle: {
-            text: '환경을 사랑하는 당신 너무 멋져요'
-          },
-          xAxis: {
-            categories: ['Jan', 'Feb', 'Mar']
-          },
-          yAxis: {
-            title: {
-              text: 'Temperature'
-            },
-            labels: {
-              formatter: function () {
-                return this.value + '°';
-              }
-            }
-          },
-          tooltip: {
-            crosshairs: true,
-            shared: true
-          },
-          plotOptions: {
-            spline: {
-              marker: {
-                radius: 4,
-                lineColor: '#666666',
-                lineWidth: 1
-              }
-            }
-          },
-          series: [{
-            name: 'Tokyo',
-            marker: {
-              symbol: 'square'
-            },
-            data: {{tokyo}}
-  
-          }, {
-            name: 'London',
-            marker: {
-              symbol: 'diamond'
-            },
-            data: {{london}}
-          }]
-        });
-      </script>
-   
-   
-  {% comment %}  {% endcomment %}
+
+ 
       <div id="aa">
           <div class="hall_p">
               <div id="head_1">적립가능 포인트</div>
@@ -305,73 +286,7 @@
                 </div>
             </div> 
             
-            <figure class="highcharts-figure">
-              <div id="graph"></div>
-              <p class="highcharts-description">
-              
-            </figure>
-            
-            <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
-            <!-- 6. script -->
-            <script>
-              Highcharts.chart('graph', {
-                chart: {
-                  type: 'column'
-                },
-                title: {
-                  text: '다회용품 이용횟수와 그에 따른 탄소 감축량'
-                },
-                subtitle: {
-                  text: '환경을 사랑하는 당신 너무 멋져요'
-                },
-                xAxis: {
-                  categories: ['Jan', 'Feb', 'Mar']
-                },
-                yAxis: {
-                  title: {
-                    text: 'Temperature'
-                  },
-                  labels: {
-                    formatter: function () {
-                      return this.value + '°';
-                    }
-                  }
-                },
-                tooltip: {
-                  crosshairs: true,
-                  shared: true
-                },
-                plotOptions: {
-                  spline: {
-                    marker: {
-                      radius: 4,
-                      lineColor: '#666666',
-                      lineWidth: 1
-                    }
-                  }
-                },
-                series: [{
-                  name: 'Tokyo',
-                  marker: {
-                    symbol: 'square'
-                  },
-                  data: [7.0, 6.9, 9.5, ]
         
-                }, {
-                  name: 'London',
-                  marker: {
-                    symbol: 'diamond'
-                  },
-                  data: [{
-                    y: 3.9,
-                    marker: {
-                      symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
-                    }
-                  }, 4.2, 5.7]
-                }]
-              });
-            </script>
-         
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트</div>

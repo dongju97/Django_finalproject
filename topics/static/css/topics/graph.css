@@ -31,20 +31,19 @@ ul.tabs{
 }
 
 ul.tabs li{
-    background: none;
+    background: white;
     color: rgb(0, 0, 0);
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 38px;
-    background-color: rgb(194, 224, 182);
     width: 30%;
     text-align: center;
     border-radius: 10px;
 }
 
 ul.tabs li.current{
-    background: #5eac5d;
+    background:white;
     color: rgb(255, 255, 255);
     font-size: 40px;
     /* margin-bottom: 40px; */
@@ -66,6 +65,7 @@ ul.tabs li.current{
 
 *{
     font-family: 'NanumSquareRound',sans-serif;
+    font-size: 30px;
   }
 
 
