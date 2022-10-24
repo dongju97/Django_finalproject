@@ -12,7 +12,6 @@ urlpatterns = [
     path('save/', views.save, name="save"),
     path('write/', views.write, name="write"),
     path('popup/', views.popup, name="popup"),
-    path('feed_1/', views.feed_1, name="feed_1"),
     
     #로그인/회원가입
     path('main/<int:pk>', views.main, name="main"),

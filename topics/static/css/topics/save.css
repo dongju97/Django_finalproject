@@ -1,7 +1,11 @@
+body{
+    background-color: aquamarine;
+}
+
 #box{
     display: flex;
     /* margin-top: 40px; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 1400px;
     flex-direction: column;
     
@@ -17,6 +21,7 @@
     margin-left: 13%;
     margin-right: 13%;
     margin-bottom: 3%;
+    box-shadow: 2px 2px 13px rgb(220, 218, 218);
 }
 
 #first{
@@ -135,7 +140,7 @@
     padding: 60px;
     background-color: white;
     margin-bottom: 0;
-    box-shadow: 5px 5px rgb(235, 235, 235);
+    box-shadow: 2px 2px 13px rgb(220, 218, 218);
 }
 
 .hall_p{
