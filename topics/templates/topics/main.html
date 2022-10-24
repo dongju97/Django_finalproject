@@ -39,6 +39,17 @@
           });
       
       });
+
+
+        var counter = 1;
+        setInterval(function(){
+        document.getElementById('radio'+counter).checked = true;
+        counter++;
+        if(counter > 3)
+        counter = 1;
+        }, 3000)
+
+
   </script>
    
   </head>
@@ -48,7 +59,6 @@
     <div class="body">
       <div class="con">
 
-        <div class="right-body">
           <div id="box1">
             <div class="profile-id">
               {{one.name}}
@@ -93,21 +103,63 @@
             </div>
 
           </div>
-        </div>
 
         <!--  ************************************  -->
 
+
+        <div class="slide_box" style="padding-left:40px">
+          <div class="slider">
+              <div class="slides">
+                  <input type="radio" name="radio-btn" id="radio1">
+                  <input type="radio" name="radio-btn" id="radio2">
+                  <input type="radio" name="radio-btn" id="radio3">
+                  
+                  <div class="slide first">
+                    <img id="sajin" src="{% static 'images/텀포.png' %}">
+                  </div>
+                  
+                  <div class="slide">
+                    <img id="sajin" src="{% static 'images/다포.png' %}">
+                  </div>
+                  
+                  <div class="slide">
+                    <img id="sajin" src="{% static 'images/장포.png' %}">
+                  </div>
+                  
+              
+    
+                  <div class="navigation-auto">
+                      <div class="auto-btn1"></div>
+                      <div class="auto-btn2"></div>
+                      <div class="auto-btn3"></div>
+                  
+                  </div>
+              </div>
+    {% comment %}  {% endcomment %}
+
+          </div>
+          
+
+
+          
+</div>  
+
+
+
+<!--end-->
+<script src="/slide.js"></script>
+
+
+
+
+
         <div class="box2">
 
-          <div class="box2_1">달성량</div>
-
-          <div class="box2_2"  onclick="location.href='{% url 'topics:graph' %}'">
-            <img src="{% static 'images/다_포인트받기.png' %}" alt="" style="box-shadow: 5px 5px rgb(235, 235, 235); margin-left: 20px;">
-            <!-- <img src="대_포인트받기.png" alt=""> -->
-          </div>
 
         </div>
 
+
+        
         <!-- ************************************ -->
         <div class="left-body">
           <div class="container">
