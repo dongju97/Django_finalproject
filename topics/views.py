@@ -31,4 +31,8 @@ def goal(request):
 
 def graph(request):
     return render(request, "graph.html")
+
+
+def save(request):
+    return render(request, "save.html")
     

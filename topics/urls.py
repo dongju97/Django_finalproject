@@ -11,6 +11,8 @@ urlpatterns = [
     path('write/', views.write, name="write"),
     path('check/', views.check, name="check"), 
     path('goal/', views.goal, name="goal"), 
-    path('graph/', views.graph, name="graph"), 
+    path('graph/', views.graph, name="graph"),
+    path('save/', views.save, name="save"),
+
     
 ]
