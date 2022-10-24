@@ -61,9 +61,9 @@
     
       ul.tabs li.current{
         text-decoration: underline;
-        {% comment %} background:white; {% endcomment %}
-        color: rgb(255, 255, 255);
+        background-color: rgba(203, 221, 207, 0.107);
         font-size: 40px;
+        color:black;
         /* margin-bottom: 40px; */
     }
     </style>
@@ -97,9 +97,9 @@
       title: {
         style: {//차트 전체 스타일 지정
           color: '#444',
-            fontFamily: 'notoSans',
+          fontFamily: 'notoSans',
           fontWeight:'1000',
-          fontSize:'30px'
+          fontSize:'40px'
         },
         text: '이용횟수와 그에 따른 탄소 감축량'
       },
@@ -178,14 +178,7 @@
 
 	<div id="tab-1" class="tab-content current">
         <div class="hall_box">
-            <div id ="a">
-                <div id="tp_text">
-                    텀블러 이용 내역
-                </div>
-                <div id="tp_info">
-                    <button id="info_button" class="inline"><img src="{% static 'images/question.png' %}" width="30px" height="30px"></button>
-                </div>
-            </div> 
+           
             
           
             <div id="aa">
@@ -227,14 +220,7 @@
 
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
-      <div id ="a">
-          <div id="tp_text">
-              장바구니 이용 내역
-          </div>
-          <div id="tp_info">
-              <button id="info_button" class="inline"><img src="{% static 'images/question.png' %}" width="30px" height="30px"></button>
-          </div>
-      </div> 
+     
       
 
 
@@ -277,14 +263,7 @@
  
 	<div id="tab-3" class="tab-content">
         <div class="hall_box">
-            <div id ="a">
-                <div id="tp_text">
-                    다회용기 이용 내역
-                </div>
-                <div id="tp_info">
-                    <button id="info_button" class="inline"><img src="{% static 'images/question.png' %}" width="30px" height="30px"></button>
-                </div>
-            </div> 
+           
             
         
             <div id="aa">

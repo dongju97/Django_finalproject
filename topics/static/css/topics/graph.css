@@ -60,7 +60,7 @@ ul.tabs li.current{
 .tab-content.current{
     display: inherit;
     padding: 0;
-    border: 1px solid black;
+    
 }
 
 
