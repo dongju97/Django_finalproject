@@ -20,24 +20,25 @@
         }
 
         .navbar {
-            display: flex;
-            justify-content: center;
-            position: fixed;
-            width: 100%;
-            background-color: rgba(214, 225, 217, 0.278);
-            /* border-bottom: solid 1px rgb(202, 202, 202); */
-          }
+          display: flex;
+          justify-content: center;
+          position: fixed;
+          width: 100%;
+          background-color: rgba(195, 219, 200, 0.107);
+          padding-left:0px;
+          /* border-bottom: solid 1px rgb(202, 202, 202); */
+        }
     
         .navbar-search {
             width: 300px;
             font-size: 14px;
           }
 
-        #menu_button {
+          #menu_button {
             margin-top: 40px;
             background-color: transparent;
-              border : 0;
-            padding-left: 15px;
+            padding-right: 45px;
+            border: 0px;
             }
         
         #back_button {
@@ -73,16 +74,14 @@
 
   
   <body>
-    <nav class="navbar">
-
-        <div class="navbar">
+     <div class="navbar">
             <button id="back_button" class="inline" ><img src="{% static 'images/뒤로가기.png' %}" width="27" height="70" onclick="back()"></button>
                 
                 <button id="pencil_button" class="inline"><img src="{% static 'images/pencil.png' %}" width="60" height="60" onclick="{% url 'topics:popup' %}"></button>
                 <button id="menu_button" class="inline"><img src="{% static 'images/메뉴.png' %}" width="70" height="70"></button>
 
         </div>        
-    </nav>
+
 
     {% block content %}{% endblock content %}
   </body>

@@ -1,9 +1,8 @@
 
-/* body{
-    margin-top: 100px;
-    font-family: 'Trebuchet MS', serif;
-    line-height: 1.6
-} */
+body{
+    /* background-color: rgb(42, 164, 69); */
+    background-color: rgba(195, 219, 200, 0.107);
+}
 
 #first{
     display: flex;
@@ -17,9 +16,12 @@
 
 .container{
     /* width: 980px; */
-    margin: 0;
-    margin-top: 100px;
+    margin: 0px;
+    margin-top: 30px;
     width:100%;
+    /* background-color: white; */
+    padding-top: 20px;
+    border-radius: 30px;
     
 }
 
@@ -31,21 +33,28 @@ ul.tabs{
 }
 
 ul.tabs li{
-    background: white;
-    color: rgb(0, 0, 0);
+    background: rgb(202, 221, 202);
+    color: rgb(28, 27, 27);
     display: inline-block;
-    /* padding: 10px 15px; */
+    padding: 10px 15px;
     cursor: pointer;
     font-size: 38px;
-    width: 30%;
+    width: 200px;
+    height: 80px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 8px;
+    /* border-bottom: 3px solid black; */
+    margin-left: 3px;
+
 }
 
 ul.tabs li.current{
-    background:white;
+    background:rgb(133, 171, 133);
+    border-radius: 8px;
+    padding: 10px 15px;
     color: rgb(255, 255, 255);
     font-size: 40px;
+    /* border-bottom: 7px solid black; */
     /* margin-bottom: 40px; */
 }
 
@@ -62,6 +71,9 @@ ul.tabs li.current{
     padding: 0;
     
 }
+
+
+
 
 
 
@@ -121,7 +133,7 @@ ul.tabs li.current{
 .hall_p{
     /* border: 1px solid black; */
     height: 100px;
-    margin-top: 120px;
+    margin-top: 70px;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -136,6 +148,7 @@ ul.tabs li.current{
 
     margin-top: 20px;
     width: 50%;
+    /* font-size: 60px; */
 }
 
 #head_2{
@@ -152,14 +165,22 @@ ul.tabs li.current{
 
 #juklib_button{
 
-    background-color: transparent;
+    background-color: rgb(164, 198, 164);
     border : 0;
+    width: 200px;
+    height: 75px;
+    border-radius: 18px;
+    color: white;
+    margin-left: 30px;
+    margin-top: 15px;
+    font-size: 35px;
+    box-shadow: 2px 2px 13px rgb(220, 218, 218);
 }
 
 .line{
     width: 750px;
     margin-left: 45px;
-    margin-top: 10px;
+    margin-top: 9px;
 }
 
 .title{
@@ -206,3 +227,41 @@ ul.tabs li.current{
 }
 
 
+/*  */
+
+
+
+#graph{
+    font-size:60px;
+    width: 90%;
+    padding-left: 50px;
+    border-radius: 60px;  
+  }
+
+
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    
+}
+
+#aaaaa{
+    padding: 10px;
+    padding-top: 60px;
+    /* border: 1px solid black; */
+    border-radius: 40px;
+    margin: 40px;
+    margin-top: 80px;
+    background-color: white;
+}
+
+#qu{
+    background-color: transparent;
+}
+
+
+#qu_img{
+    width: 20px;
+    height: 20px;
+}
