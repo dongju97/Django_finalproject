@@ -183,6 +183,26 @@
             </div>
         </div>
 	</div>
+
+  <div id="modal_tum_img" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+        <div id="img_modal">
+          <img id="img_modal_1" src="{% static 'images/텀_설.png' %}" alt="">
+  
+        </div>
+    </div>
+  </div>
+
+  
 {% comment %}  {% endcomment %}
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
@@ -193,7 +213,7 @@
  
       <div id="aa">
           <div class="hall_p">
-            <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+            <div id="head_1">적립가능 포인트<button id="jang_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
             </button></div>
               <div id="head_2">50P</div>
               <div id="head_3">
@@ -224,6 +244,28 @@
       </div>
   </div>
 </div>
+
+
+<div id="modal_jang_img" class="modal_overlay">
+  <div class="modal_window">
+      <div class="modal_title">
+          <div class="modal_title_side"></div>
+          <div>  </div>
+          <div class="modal_title_side">
+              <span id="close_modal1" class="material-icons-outlined">
+                  확인
+              </span>
+          </div>
+      </div>
+      <div id="img_modal">
+        <img id="img_modal_1" src="{% static 'images/장_설.png' %}" alt="">
+
+      </div>
+  </div>
+</div>
+
+
+
  {% comment %}  {% endcomment %}
 	<div id="tab-3" class="tab-content">
         <div class="hall_box">
@@ -232,7 +274,7 @@
         
             <div id="aa">
                 <div class="hall_p">
-                  <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+                  <div id="head_1">적립가능 포인트<button id="da_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
                   </button></div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
@@ -262,23 +304,29 @@
                 </div>
             </div>
 	</div>
+
+  <div id="modal_da_img" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal2" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+        <div id="img_modal">
+          <img id="img_modal_1" src="{% static 'images/다_설.png' %}" alt="">
+  
+        </div>
+    </div>
+  </div>
 {% comment %}  {% endcomment %}
 </div>
 
 
-<div id="modal_tum_img" class="modal_overlay">
-  <div class="modal_window">
-      <div class="modal_title">
-          <div class="modal_title_side"></div>
-          <div> 설명 </div>
-          <div class="modal_title_side">
-              <span id="close_modal" class="material-icons-outlined">
-                  x
-              </span>
-          </div>
-      </div>
-  </div>
-</div>
+
 
 
 <script>
@@ -289,11 +337,40 @@
       modal.style.display = "flex";
       document.body.style.overflowY = "hidden"; // 스크롤 없애기
   });
+
+
+  const modal1 = document.getElementById("modal_jang_img");
+  const buttonAddFeed1 = document.getElementById("jang_img");
+  buttonAddFeed1.addEventListener("click", e => {
+      modal1.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+  const modal2 = document.getElementById("modal_da_img");
+  const buttonAddFeed2 = document.getElementById("da_img");
+  buttonAddFeed2.addEventListener("click", e => {
+      modal2.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+
   
   // 모달 닫기 코드
   const buttonCloseModal = document.getElementById("close_modal");
   buttonCloseModal.addEventListener("click", e => {
       modal.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal1 = document.getElementById("close_modal1");
+  buttonCloseModal1.addEventListener("click", e => {
+      modal1.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal2 = document.getElementById("close_modal2");
+  buttonCloseModal2.addEventListener("click", e => {
+      modal2.style.display = "none";
       document.body.style.overflowY = "visible";
   });
 
