@@ -18,6 +18,8 @@
 
     <script>
       $(document).ready(function(){
+        localStorage.setItem("pk", {{one.pk}})
+        alert(localStorage.pk)
 
           $('ul.tabs li').click(function(){
               
@@ -38,7 +40,9 @@
             }
           });
       
+          
       });
+
   </script>
    
   </head>
@@ -63,7 +67,7 @@
                 <div class="under_profile_box" style=" width: 50%;">
 
                   <div class="point">
-                    50p
+                    {{point.used_point}}
                   </div>
                   <div class="point_tag" onclick="location.href='{% url 'topics:point' %}'">
                     내 포인트
@@ -71,8 +75,8 @@
                 </div>
 
                 <div class="under_profile_box" style="width: 100%;">
-                  <div class="point">
-                    50p
+                  <div class="point" >
+                    {{savePoint}}
                   </div>
                   <div class="point_tag">
                     탄소 세이브

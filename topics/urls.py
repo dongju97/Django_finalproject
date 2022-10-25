@@ -19,4 +19,7 @@ urlpatterns = [
     path('logindo/', views.logindo, name="logindo"),
     path('signin/', views.signin, name="signin"),
     path('signup/', views.signup, name="signup"),
+    
+    #포인트 적립
+    path('getPoint/<int:pk>', views.getPoint, name="getPoint"),
 ]

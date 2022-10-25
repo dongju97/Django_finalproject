@@ -1,4 +1,4 @@
-{% extends 'no_pen.html' %}
+
 {% load static %}
 {% block content %}
 
@@ -26,10 +26,25 @@
                 $('ul.tabs li').removeClass('current');
                 $('.tab-content').removeClass('current');
                 $(this).addClass('current');
-                $("#"+tab_id).addClass('current');
-             
+                $("#"+tab_id).addClass('current');  
+            });
+
+            $('#juklib_button').click(function(){
+                var point = $(this).val();
                 
-              
+                $.ajax({
+                  type:'get',
+                  url:'/topics/getPoint'+ {{user.pk}},
+                  dataType:'json',
+                  data: {
+                    'point':point
+                  }
+
+                success:function(result){
+                   alert(result);
+                }//callback
+            });
+                });
             });
         
         });
@@ -86,12 +101,7 @@
       
       chart: {
         type: 'column',
-        style: {//차트 전체 스타일 지정
-          color: '#444',
-            fontFamily: 'notoSans',
-          fontWeight:'1000',
-          fontSize:'20px'
-        }
+       
       },
       
       title: {
@@ -104,15 +114,12 @@
         text: '이용횟수와 그에 따른 탄소 감축량'
       },
       subtitle: {
-        text: '환경을 사랑하는 당신 이만큼이나 탄소를 줄이셨군요'
+        text: '이만큼이나 환경을 사랑하셨군요!'
       },
       xAxis: {
         categories: ['텀블러', '장바구니', '다회용품'],
         style: {//차트 전체 스타일 지정
-          color: '#444',
-            fontFamily: 'notoSans',
-          fontWeight:'1000',
-          fontSize:'30px'
+          fontSize:'50px'
         }
         
       },
@@ -120,12 +127,12 @@
         title: {
           text: '사용횟수/ 탄소 절감량'
         },
-        labels: {
+        {% comment %} labels: {
           
           formatter: function () {
             return this.value + '°';
           }
-        }
+        } {% endcomment %}
       },
       tooltip: {
         crosshairs: true,
@@ -184,9 +191,9 @@
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트</div>
-                    <div id="head_2">50P</div>
+                    <div id="head_2">20P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
+                        <button id="juklib_button" class="inline" value="20"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
                     </div>
         
                 </div>
@@ -228,9 +235,9 @@
       <div id="aa">
           <div class="hall_p">
               <div id="head_1">적립가능 포인트</div>
-              <div id="head_2">50P</div>
+              <div id="head_2">10P</div>
               <div id="head_3">
-                  <button id="juklib_button" class="inline"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
+                  <button id="juklib_button" class="inline"  value="10"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
               </div>
   
           </div>
@@ -269,9 +276,9 @@
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트</div>
-                    <div id="head_2">50P</div>
+                    <div id="head_2">30P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
+                        <button id="juklib_button" class="inline"  value="30"><img src="{% static 'images/적립.png' %}" width="210px" height="95px"></button>
                     </div>
         
                 </div>
