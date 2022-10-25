@@ -1,6 +1,4 @@
-body{
-    background-color: aquamarine;
-}
+
 
 #box{
     display: flex;
@@ -138,7 +136,7 @@ body{
     margin-top: 30px;
     font-size: 40px;
     padding: 60px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     margin-bottom: 0;
     box-shadow: 2px 2px 13px rgb(220, 218, 218);
 }
