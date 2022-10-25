@@ -2,19 +2,9 @@
 {% load static %}
 {% block content %}
 
-<html lang="en">
 
 <head>
 
-    {% comment %} 모달 {% endcomment %}
-
-    {% comment %} <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
-
-    {% comment %}  {% endcomment %}
 
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <!-- Bootstrap CSS -->
@@ -41,117 +31,12 @@
         });
     </script>
 
-    <script>
-      $('#alert').on('click',function(){
-        $.dialogbox({
-        type:'msg',
-        title:'Alert Title',
-        icon:1,
-        content:'Alert Content',
-        btn:['Confirm'],
-        call:[
-          function(){
-            $.dialogbox.close(); 
-          }
-        ]
-      });
-      });
-    </script>
-
-    {% comment %} <script>
-      $(fuction(){
-        $(document).on("click", "#alert", function () {
-          action_popup.alert("경고창 테스트!!!");
-      });
-  
-      $(".modal_close").on("click", function () {
-          action_popup.close(this);
-      });
-  
-      });
-
-
-      var action_popup = {
-        timer: 500,
-        confirm: function (txt, callback) {
-            if (txt == null || txt.trim() == "") {
-                console.warn("confirm message is empty.");
-                return;
-            } else if (callback == null || typeof callback != 'function') {
-                console.warn("callback is null or not function.");
-                return;
-            } else {
-                $(".type-confirm .btn_ok").on("click", function () {
-                    $(this).unbind("click");
-                    callback(true);
-                    action_popup.close(this);
-                });
-                this.open("type-confirm", txt);
-            }
-        },
     
-        alert: function (txt) {
-            if (txt == null || txt.trim() == "") {
-                console.warn("confirm message is empty.");
-                return;
-            } else {
-                this.open("type-alert", txt);
-            }
-        },
-    
-        open: function (type, txt) {
-            var popup = $("." + type);
-            popup.find(".menu_msg").text(txt);
-            $("body").append("<div class='dimLayer'></div>");
-            $(".dimLayer").css('height', $(document).height()).attr("target", type);
-            popup.fadeIn(this.timer);
-        },
-    
-        close: function (target) {
-            var modal = $(target).closest(".modal-section");
-            var dimLayer;
-            if (modal.hasClass("type-confirm")) {
-                dimLayer = $(".dimLayer[target=type-confirm]");
-                $(".type-confirm .btn_ok").unbind("click");
-            } else if (modal.hasClass("type-alert")) {
-                dimLayer = $(".dimLayer[target=type-alert]")
-            } else {
-                console.warn("close unknown target.")
-                return;
-            }
-            modal.fadeOut(this.timer);
-            setTimeout(function () {
-                dimLayer != null ? dimLayer.remove() : "";
-            }, this.timer);
-        }
-    }
-
-
-    </script> {% endcomment %}
-
 </head>
 
 
 <body>
-  {% comment %}  {% endcomment %}
-{% comment %} <div class="wrap">
-
-  <section>
-    <button type="button" id="alert">경고창</button>
-</section>
-
-<section class="modal modal-section type-alert">
-  <div class="enroll_box">
-      <p class="menu_msg"></p>
-  </div>
-  <div class="enroll_btn">
-      <button class="btn pink_btn modal_close">확인</button>
-  </div>
-</section> {% endcomment %}
-
-{% comment %}  {% endcomment %}
-
-
+  {% comment %} <div id="add_feed" style="font-size:30px;">안녕</div> {% endcomment %}
   <div id="aaaaa">
     <figure class="highcharts-figure">
       <div id="graph"></div>
@@ -258,14 +143,14 @@
         </div>
     </div>
 
-{% comment %} #tab-1 > .hall_box > #aa > .hall_p >#head_1 > #tum_byn{% endcomment %}
+
 	<div id="tab-1" class="tab-content current">
-    <a href="javascript:;" id="alert">alert</a>
+
         <div class="hall_box">
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트
-                      <button id="tum_btn" class="inline" style="background-color:transparent; border:0px;">
+                      <button id="tum_img" class="inline" style="background-color:transparent; border:0px;">
                         <img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:5px;" src="{% static 'images/question.png' %}">
                       </button>
                     </div>
@@ -377,13 +262,43 @@
                 </div>
             </div>
 	</div>
-<!-- container -->
+{% comment %}  {% endcomment %}
 </div>
 
 
+<div id="modal_tum_img" class="modal_overlay">
+  <div class="modal_window">
+      <div class="modal_title">
+          <div class="modal_title_side"></div>
+          <div> 설명 </div>
+          <div class="modal_title_side">
+              <span id="close_modal" class="material-icons-outlined">
+                  x
+              </span>
+          </div>
+      </div>
+  </div>
+</div>
 
 
-{% comment %} </div> {% endcomment %}
+<script>
+
+  const modal = document.getElementById("modal_tum_img");
+  const buttonAddFeed = document.getElementById("tum_img");
+  buttonAddFeed.addEventListener("click", e => {
+      modal.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+  
+  // 모달 닫기 코드
+  const buttonCloseModal = document.getElementById("close_modal");
+  buttonCloseModal.addEventListener("click", e => {
+      modal.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+</script>
+
 </body>
 
 
