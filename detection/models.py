@@ -17,3 +17,4 @@ class pointHistory:
     point = models.IntegerField() #적립포인트
     detail = models.CharField(max_length=20) #포인트 사용/적립 내역
     create_at = models.DateTimeField(auto_now_add=True) #사용일자
+    

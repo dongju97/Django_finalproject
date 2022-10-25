@@ -18,57 +18,24 @@
         <script src="https://code.highcharts.com/modules/series-label.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
-{% comment %} 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
-
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-
-
-
         $(document).ready(function(){
-	
             $('ul.tabs li').click(function(){
-                
                 var tab_id = $(this).attr('data-tab');
                 
                 $('ul.tabs li').removeClass('current');
                 $('.tab-content').removeClass('current');
                 $(this).addClass('current');
-                $("#"+tab_id).addClass('current');
-                          
-              
+                $("#"+tab_id).addClass('current');            
             });
-        
         });
-
-
-
-
     </script>
-
     <script>
-
       $(fuction(){
-        {% comment %} $("#first").on('click',"#tum_btn",function(){
-          alert("dkssud");
-        }); {% endcomment %}
 
-        $("#tum_btn").click(fuction(){
-          alert('df');
-        });
-
-    });
+      });
     </script>
-    
-    <style>
-
-    
-
-
-    </style>
-
 </head>
 
 
@@ -82,7 +49,7 @@
       
     </figure>
   </div>
-  
+
   <!-- 5. <script src="{% static 'chart/js/line.js' %}" ></script> -->
   <!-- 6. script -->
   <script>
@@ -182,16 +149,15 @@
     </div>
 
 {% comment %} #tab-1 > .hall_box > #aa > .hall_p >#head_1 > #tum_byn{% endcomment %}
-
 	<div id="tab-1" class="tab-content current">
         <div class="hall_box">
-           
-            
-          
             <div id="aa">
                 <div class="hall_p">
-                    <div id="head_1">적립가능 포인트<button id="tum_btn" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
-                    </button></div>
+                    <div id="head_1">적립가능 포인트
+                      <button id="tum_btn" class="inline" style="background-color:transparent; border:0px;">
+                        <img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+                      </button>
+                    </div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
                         <button id="juklib_button" class="inline">적립</button>
@@ -221,11 +187,7 @@
             </div>
         </div>
 	</div>
-
-
-
 {% comment %}  {% endcomment %}
-
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
      
@@ -266,10 +228,7 @@
       </div>
   </div>
 </div>
-
  {% comment %}  {% endcomment %}
-
- 
 	<div id="tab-3" class="tab-content">
         <div class="hall_box">
            
@@ -307,8 +266,6 @@
                 </div>
             </div>
 	</div>
-
-
 <!-- container -->
 </div>
 
