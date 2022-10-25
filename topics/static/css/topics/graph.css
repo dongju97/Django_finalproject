@@ -165,6 +165,7 @@ ul.tabs li.current{
 
 #juklib_button{
 
+    /* background-color: rgb(6, 61, 6); */
     background-color: rgb(164, 198, 164);
     border : 0;
     width: 200px;
@@ -253,7 +254,7 @@ ul.tabs{
     border-radius: 40px;
     margin: 40px;
     margin-top: 80px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 #qu{
