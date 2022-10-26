@@ -35,8 +35,8 @@ def feed(request):
         sel_cat = request.POST.get('shop')
         comment = request.POST.get('comment')
         image = request.FILES['image']
-
-        diary = Diary(userid=pk, comment = comment, image = image, cat_selected=sel_cat)
+        userid = request.POST.get('pk')
+        diary = Diary(userid=userid, comment = comment, image = image, cat_selected=sel_cat)
         diary.save()
 
         uploaded_img_qs = Diary.objects.filter().last()
@@ -52,18 +52,28 @@ def feed(request):
         results.save(save_dir='media', exist_ok=True)
         
         labels = results.pandas().xyxy[0]['name']
-        
+
         for label in labels:
             if label == sel_cat:
-                return render(request, 'feed.html')
+                if sel_cat == 'tumbler':
+                    sel_cat = '텀블러'
+                elif sel_cat == 'bag':
+                    sel_cat = '장바구니'
+                elif sel_cat == 'container':
+                    sel_cat = '다회용기'
+                
+                context = {
+                    'com': comment,
+                    'image': uploaded_img_qs.image.url,
+                    'sel_cat': sel_cat,
+                }
+                return render(request, 'pages/feed.html', context)
 
         Diary.objects.filter().last().delete()
-        context = {
-            'com': comment,
-        }
-        return render(request, 'write.html', context)
+        
+        return render(request, 'pages/write.html', context)
     else:
-        return render(request, 'feed.html')
+        return render(request, 'pages/feed.html')
 
 
 def point(request,pk):
@@ -93,7 +103,6 @@ def save(request):
 
 
 def write(request):
-    
     return render(request, "pages/write.html")
 
 
