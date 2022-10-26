@@ -10,7 +10,7 @@ urlpatterns = [
     
     path('feed/', views.feed, name="feed"),
     path('point/<int:pk>', views.point, name="point"),
-    path('save/', views.save, name="save"),
+    path('save/<int:pk>', views.save, name="save"),
     path('write/', views.write, name="write"),
     path('popup/', views.popup, name="popup"),
     

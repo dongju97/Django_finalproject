@@ -14,6 +14,9 @@ from . models import PointHistory
 from . models import Diary
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
+from django.utils.dateformat import DateFormat
+
 #페이지
 
 def graph(request,pk):
@@ -84,9 +87,7 @@ def point(request,pk):
     container = user.container *30
     bag = user.bag * 10
     acc = tumbler + container + bag
-    
-    
-    
+  
     context={
         'user':user,
         'point':point,
@@ -98,8 +99,30 @@ def point(request,pk):
     return render(request, "pages/point.html", context)
 
 
-def save(request):
-    return render(request, "pages/save.html")
+def save(request,pk):
+    user = UserSummary.objects.get(userid = pk)
+    diary = Diary.objects.filter(userid = pk)
+    
+    tumbler = user.tumbler * 50
+    container = user.container * 32
+    bag = user.bag * 200
+    acc = tumbler + container + bag
+    
+    
+    today = DateFormat(datetime.now()).format('Ymd')
+    
+    
+    context={
+        'user':user,
+        'tumbler': tumbler,
+        'container': container,
+        'bag':bag,
+        'acc':acc,
+        'today':today
+        
+    }
+    
+    return render(request, "pages/save.html",context)
 
 
 def write(request):
