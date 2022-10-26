@@ -74,9 +74,7 @@ def point(request,pk):
     container = user.container *30
     bag = user.bag * 10
     acc = tumbler + container + bag
-    
-    
-    
+  
     context={
         'user':user,
         'point':point,
@@ -88,8 +86,13 @@ def point(request,pk):
     return render(request, "pages/point.html", context)
 
 
-def save(request):
-    return render(request, "pages/save.html")
+def save(request,pk):
+    user = UserSummary.objects.get(userid = pk)
+    context={
+        'user':user
+    }
+    
+    return render(request, "pages/save.html",context)
 
 
 def write(request):
