@@ -1,6 +1,5 @@
 
-
-{% extends 'base.html' %}
+{% extends 'no_pen.html' %}
 {% load static %}
 {% block content %}
 
@@ -42,32 +41,6 @@
     </div>
     {% comment %}  {% endcomment %}
 
-    <div class="box">
-        <div>
-           
-            <div class="title">
-                <div style="width:90%; margin-left:40px">
-                    장바구니 사용
-                </div>
-                <div style="width:10%;">
-                    <button id="button" class="inline"><img src="{% static 'images/점세개.png' %}" width="50px" height="60px"></button>
-                </div>
-            </div>
-            <div id="photo">
-                <img class="photo_1" src="{% static 'images/사진1.png' %}" alt="">
-            </div>
-            <div id="day">
-                2022.10.22
-            </div>
-            <hr id="line">
-            <div id="text">
-                가나다라마바사
-                가나다라마바사<br>
-                안녕안녕 난 이경은이야<br>
-                집가고싶다
-            </div>
-        </div>    
-    </div>
 </body>
 
 {% endblock content %}
