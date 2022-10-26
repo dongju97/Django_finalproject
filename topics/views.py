@@ -69,16 +69,17 @@ def feed(request,pk):
 def point(request,pk):
     user = UserSummary.objects.get(userid = pk)
     
-    tumbler = user.tumbler * 50
-    container = user.container *200
-    bag = user.bag * 32
+    tumbler = user.tumbler * 20
+    container = user.container *30
+    bag = user.bag * 10
     
-    
+    acc = tumbler + container + bag
     context={
         'user':user,
         'tumbler': tumbler,
         'container': container,
-        'bag':bag
+        'bag':bag,
+        'acc':acc
     }
     return render(request, "pages/point.html", context)
 
@@ -170,19 +171,19 @@ def getPoint(request):
         print('-------',i.acc_bool)
         #PointHistory
         if kind =="tumbler":
-            a = 50
+            a = 20
             b = "텀블러 사용 적립"
             point.tumbler +=1
             msg = "텀블러 등록 완료"
             
         elif kind == "bag":
-            a = 32
+            a = 10
             b = "장바구니 사용 적립"
             point.bag +=1
             msg = "장바구니 등록 완료"
             
         elif kind == "container":
-            a = 200
+            a = 30
             b = "다회용기 사용 적립"
             point.container +=1
             msg = "다회용기 등록 완료"
