@@ -1,3 +1,7 @@
+import io
+from PIL import Image as im
+import torch
+
 from itertools import accumulate
 from logging import exception
 import json
@@ -27,7 +31,39 @@ def graph(request,pk):
     return render(request, "pages/graph.html",context)
 
 def feed(request):
-    return render(request, "pages/feed.html")
+    if request.method=='POST':
+        sel_cat = request.POST.get('shop')
+        comment = request.POST.get('comment')
+        image = request.FILES['image']
+
+        diary = Diary(userid=1, comment = comment, image = image, cat_selected=sel_cat)
+        diary.save()
+
+        uploaded_img_qs = Diary.objects.filter().last()
+        img_bytes = uploaded_img_qs.image.read()
+        img = im.open(io.BytesIO(img_bytes))
+
+        path_weightfile = "topics/model/best.pt"
+
+        model = torch.hub.load('ultralytics/yolov5', 'custom',
+                               path=path_weightfile)
+
+        results = model(img, size=640)
+        results.save(save_dir='media', exist_ok=True)
+        
+        labels = results.pandas().xyxy[0]['name']
+        
+        for label in labels:
+            if label == sel_cat:
+                return render(request, 'feed.html')
+
+        Diary.objects.filter().last().delete()
+        context = {
+            'com': comment,
+        }
+        return render(request, 'write.html', context)
+    else:
+        return render(request, 'feed.html')
 
 
 def point(request,pk):
