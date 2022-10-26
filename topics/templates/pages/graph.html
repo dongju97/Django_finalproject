@@ -4,7 +4,23 @@
 
 
 <head>
+  <style>
 
+    #juklib_button1,#juklib_button2,#juklib_button3 {
+    
+    background-color: rgb(164, 198, 164);
+    border : 0;
+    width: 200px;
+    height: 75px;
+    border-radius: 18px;
+    color: white;
+    margin-left: 30px;
+    margin-top: 15px;
+    font-size: 35px;
+    box-shadow: 2px 2px 13px rgb(220, 218, 218);
+    }
+     
+    </style>
 
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <!-- Bootstrap CSS -->
@@ -28,7 +44,88 @@
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');            
             });
-        });
+            $('#juklib_button1').click(function(){
+              kind = $(this).val();
+              pk = localStorage.pk
+              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+               
+              $.ajax({
+              type:'POST',
+              url:'/getPoint/',
+              dataType:'json',
+              data:{
+              'kind':kind,
+              'pk':pk
+              },
+              success:function(json){
+              alert(json.msg);
+              },
+              error : function(xhr,errmsg,err) {
+              console.log(xhr.status + ": " + xhr.responseText);
+              }
+              
+               
+              });
+               
+               
+              
+               
+              });
+              $('#juklib_button2').click(function(){
+              kind = $(this).val();
+              pk = localStorage.pk
+              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+               
+              $.ajax({
+              type:'POST',
+              url:'/getPoint/',
+              dataType:'json',
+              data:{
+              'kind':kind,
+              'pk':pk
+              },
+              success:function(json){
+              alert(json.msg);
+              },
+              error : function(xhr,errmsg,err) {
+              console.log(xhr.status + ": " + xhr.responseText);
+              }
+              
+               
+              });
+              
+              
+              
+              
+              });
+              $('#juklib_button3').click(function(){
+              kind = $(this).val();
+              pk = localStorage.pk
+              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+               
+              $.ajax({
+              type:'POST',
+              url:'/getPoint/',
+              dataType:'json',
+              data:{
+              'kind':kind,
+              'pk':pk
+              },
+              success:function(json){
+              alert(json.msg);
+              },
+              error : function(xhr,errmsg,err) {
+              console.log(xhr.status + ": " + xhr.responseText);
+              }
+              
+               
+              });
+               
+               
+              
+               
+              });
+              });
     </script>
 
     
@@ -49,83 +146,118 @@
   <!-- 6. script -->
   <script>
     Highcharts.chart('graph', {
-      
+ 
       chart: {
-        type: 'column',
-        style: {//차트 전체 스타일 지정
-          color: '#444',
-          fontFamily: 'notoSans',
-          fontWeight:'1000',
-          fontSize:'40px'
-        }
+      type: 'column',
+      style: {//차트 전체 스타일 지정
+      color: '#444',
+      fontFamily: 'notoSans',
+      fontWeight:'1000',
+      fontSize:'10px'
+      }
+      },
+       
+      title: {
+      style: {//차트 전체 스타일 지정
+      color: 'black',
+      {% comment %} background-color: transparent, {% endcomment %}
+      fontFamily: 'NanumSquareRound',
+      fontWeight:'700',
+      fontSize:'50px'
+      },
+      text: '이용횟수와 탄소 감축량'
       },
       
-      title: {
-        style: {//차트 전체 스타일 지정
-          color: 'black',
-          {% comment %} background-color: transparent, {% endcomment %}
-          fontFamily: 'NanumSquareRound',
-          fontWeight:'700',
-          fontSize:'50px'
-        },
-        text: '이용횟수와 탄소 감축량'
-      },
-
       xAxis: {
-        categories: ['텀블러', '장바구니', '다회용품'],
-        style: {//차트 전체 스타일 지정
-          color: '#444',
-          fontFamily: 'NanumSquareRound',
-          fontSize:'0px',
-          fontWeight:'300',
-        }
-        
+      categories: ['텀블러', '장바구니', '다회용품'],
+      style: {//차트 전체 스타일 지정
+      color: '#444',
+      fontFamily: 'NanumSquareRound',
+      fontSize:'100',
+      fontWeight:'300',
+      }
+       
       },
-      yAxis: {
-        title: {
-          style:{
-            fontSize: "35px",
-            fontWeight:'500',
-          },
-          text: '사용횟수/ 탄소 절감량'
-        },
-        labels: {
-          
-          formatter: function () {
-            return this.value + '°';
-          }
-        }
+      yAxis: [{ // Primary yAxis
+      labels: {
+      format: '{value}°C',
+      style: {
+      color: Highcharts.getOptions().colors[2]
+      }
       },
+      title: {
+      text: 'Temperature',
+      style: {
+      color: Highcharts.getOptions().colors[2]
+      }
+      },
+      opposite: true
+      
+      }, { // Secondary yAxis
+      gridLineWidth: 0,
+      title: {
+      text: '이용횟수',
+      style: {
+      color: Highcharts.getOptions().colors[0],
+      fontSize: '30px'
+      }
+      },
+      labels: {
+      format: '{value}회',
+      style: {
+      color: Highcharts.getOptions().colors[0]
+      }
+      }
+      
+      }, { // Tertiary yAxis
+      gridLineWidth: 0,
+      title: {
+      text: '탄소 감축량',
+      style: {
+      color: Highcharts.getOptions().colors[2]
+      }
+      },
+      labels: {
+      format: '{value}g',
+      style: {
+      color: Highcharts.getOptions().colors[2]
+      }
+      },
+      opposite: true
+      }],
       tooltip: {
-        crosshairs: true,
-        shared: true
+      crosshairs: true,
+      shared: true
       },
       plotOptions: {
-        spline: {
-          marker: {
-            radius: 9,
-            lineColor: '#666666',
-            lineWidth: 1
-          }
-        }
+      spline: {
+      marker: {
+      radius: 9,
+      lineColor: '#666666',
+      lineWidth: 1,
+      fontSize:'200'
+      }
+      }
       },
       series: [{
-        
-        name: '이용횟수',
-        marker: {
-          symbol: 'square'
-        },
-        data: {{count}}
-
+      yAxis:1,
+      name: '이용횟수',
+      marker: {
+      symbol: 'square'
+      },
+      data: {{count}}
+      
       }, {
-        name: '탄소절감량',
-        marker: {
-          symbol: 'diamond'
-        },
-        data: [{
-          y: {{save.0}},}, {{save.1}}, {{save.2}}]
+      yAxis:2,
+      name: '탄소절감량',
+      marker: {
+      symbol: 'diamond'
+      },
+       
+      data: [{
+      y: {{save.0}},}, {{save.1}}, {{save.2}}]
       }]
-    });
+      });
   </script>
 
 {% comment %} /graph {% endcomment %}
@@ -156,27 +288,27 @@
                     </div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline">적립</button>
+                      <button id="juklib_button1" class="inline" value="tumbler">적립</button>
                     </div>
-        
-                </div>
-        
-                <div style="padding: 10px">
+                     
+                    </div>
+                     
+                    <div style="padding: 10px">
                     <img class="line" src="{% static 'images/선.png' %}">
-                </div>
-        
-                <div class="pyo">
+                    </div>
+                     
+                    <div class="pyo">
                     <div class="pyo_1">
-                        <div class="title">이번주이용내역</div>
-                        <div class="count">2회</div>
+                    <div class="title">이번주이용내역</div>
+                    <div class="count">{{count.0}}회</div>
                     </div>
                     <div class="pyo_1">
-                        <div class="title">총 이용내역</div>
-                        <div class="count">10회</div>
+                    <div class="title">총 이용내역</div>
+                    <div class="count">{{count.0}}회</div>
                     </div>
                     <div class="pyo_1">
-                        <div class="title">총 아낀 탄소량</div>
-                        <div class="count">10g</div>
+                    <div class="title">총 아낀 탄소량</div>
+                    <div class="count">{{save.0}}g</div>
                     </div>
         
                 </div>
@@ -217,7 +349,7 @@
             </button></div>
               <div id="head_2">50P</div>
               <div id="head_3">
-                  <button id="juklib_button" class="inline">적립</button>
+                <button id="juklib_button2" class="inline" value="bag">적립</button>
               </div>
   
           </div>
@@ -229,15 +361,15 @@
           <div class="pyo">
               <div class="pyo_1">
                   <div class="title">이번주이용내역</div>
-                  <div class="count">1회</div>
+                  <div class="count">{{count.1}}회</div>
               </div>
               <div class="pyo_1">
-                  <div class="title">총 이용내역</div>
-                  <div class="count">10회</div>
+              <div class="title">총 이용내역</div>
+              <div class="count">{{count.1}}회</div>
               </div>
               <div class="pyo_1">
-                  <div class="title">총 아낀 탄소량</div>
-                  <div class="count">10g</div>
+              <div class="title">총 아낀 탄소량</div>
+              <div class="count">{{save.1}}g</div>
               </div>
   
           </div>
@@ -278,7 +410,7 @@
                   </button></div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline">적립</button>
+                      <button id="juklib_button3" class="inline" value="container">적립</button>
                     </div>
         
                 </div>
@@ -290,15 +422,15 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">1회</div>
-                    </div>
-                    <div class="pyo_1">
-                        <div class="title">총 이용내역</div>
-                        <div class="count">10회</div>
-                    </div>
-                    <div class="pyo_1">
-                        <div class="title">총 아낀 탄소량</div>
-                        <div class="count">10g</div>
+                        <div class="count">{{count.2}}회</div>
+                      </div>
+                      <div class="pyo_1">
+                      <div class="title">총 이용내역</div>
+                      <div class="count">{{count.2}}회</div>
+                      </div>
+                      <div class="pyo_1">
+                      <div class="title">총 아낀 탄소량</div>
+                      <div class="count">{{save.2}}g</div>
                     </div>
         
                 </div>
