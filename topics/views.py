@@ -31,7 +31,20 @@ def feed(request):
 
 
 def point(request,pk):
-    return render(request, "pages/point.html")
+    user = UserSummary.objects.get(userid = pk)
+    
+    tumbler = user.tumbler * 50
+    container = user.container *200
+    bag = user.bag * 32
+    
+    
+    context={
+        'user':user,
+        'tumbler': tumbler,
+        'container': container,
+        'bag':bag
+    }
+    return render(request, "pages/point.html", context)
 
 
 def save(request):

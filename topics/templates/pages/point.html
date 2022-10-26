@@ -13,7 +13,7 @@
 <body>
     <div id="box_1">
         <div id="a">탄소 포인트 잔액</div>
-        <div id="b">1025P</div>        
+        <div id="b">{{user.used_point}}P</div>        
     </div>
 
 
@@ -22,7 +22,7 @@
     <div id="aa">
         <div class="hall_p">
             <div style="margin-top: 30px; width:60%; text-align:center;">나의 누적 포인트 내역</div>
-            <div style="margin-right: 0px; margin-top:30px; width:30%; text-align:center;">4050P</div>
+            <div style="margin-right: 0px; margin-top:30px; width:30%; text-align:center;">{{user.accumulated_point}}P</div>
 
         </div>
 
@@ -31,19 +31,19 @@
         </div>
 
         <div class="pyo">
-            <div class="pyo_1">
-                <div class="title">대중교통 사용</div>
-                <div class="count">2050p</div>
-            </div>
+           
             <div class="pyo_1">
                 <div class="title">텀블러 사용</div>
-                <div class="count">1080p</div>
+                <div class="count">{{tumbler}}p</div>
             </div>
             <div class="pyo_1">
                 <div class="title">장바구니 사용</div>
-                <div class="count">500p</div>
+                <div class="count">{{bag}}p</div>
             </div>
-
+            <div class="pyo_1">
+                <div class="title">다회용기 사용</div>
+                <div class="count">{{container}}p</div>
+            </div>
         </div>
     </div>
 

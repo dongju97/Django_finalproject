@@ -8,7 +8,7 @@ urlpatterns = [
     #페이지
     path('graph/<int:pk>', views.graph, name="graph"),
     path('feed/', views.feed, name="feed"),
-    path('point/', views.point, name="point"),
+    path('point/<int:pk>', views.point, name="point"),
     path('save/', views.save, name="save"),
     path('write/', views.write, name="write"),
     path('popup/', views.popup, name="popup"),
