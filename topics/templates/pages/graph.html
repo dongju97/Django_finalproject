@@ -152,8 +152,10 @@
       style: {//차트 전체 스타일 지정
       color: '#444',
       fontFamily: 'notoSans',
-      fontWeight:'1000',
-      fontSize:'10px'
+
+      fontWeight:'700',
+      fontSize:'10px',
+      {% comment %} margin:'10px' {% endcomment %}
       }
       },
        
@@ -162,60 +164,73 @@
       color: 'black',
       fontFamily: 'NanumSquareRound',
       fontWeight:'700',
-      fontSize:'50px'
+      fontSize:'50px',
       },
       text: '이용횟수와 탄소 감축량'
       },
       
+      
       xAxis: {
-      categories: ['텀블러', '장바구니', '다회용품'],
-      style: {//차트 전체 스타일 지정
-      color: '#444',
-      fontFamily: 'NanumSquareRound',
-      fontSize:'100',
-      fontWeight:'300',
-      }
-       
+
+          categories: ['텀블러', '장바구니', '다회용품'],
+          labels:{ //x축이 어떻게 보일것인지 설정
+            style: {color:'black', fontSize:"26px", fontWeight: "500" //글자색}
+          }
+        }
+
+
+
       },
+
+
+// **********************************************
+
       yAxis: [{ // Primary yAxis
 
-      
+      title:''
       }, { // Secondary yAxis
       gridLineWidth: 0,
       title: {
-      text: '이용횟수',
-      style: {
-      color: Highcharts.getOptions().colors[0],
-      fontSize: '30px',
-      }
+      text: '',
+      subtitle:'',
       },
+      
+      max:7,
+      min:0,
+      //
       labels: {
       format: '{value}회',
       style: {
-      color: Highcharts.getOptions().colors[0],
-  
-
+      color: "black",
+      fontSize:"20px",
+      fontWeight:400,
       }
+
       }
       
       }, { // Tertiary yAxis
       gridLineWidth: 0,
       title: {
-      text: '탄소 감축량',
+      text: '',
       style: {
-      color: Highcharts.getOptions().colors[2]
+      color: 'black',
+      
       }
       },
       labels: {
       format: '{value}g',
       style: {
-      color: Highcharts.getOptions().colors[2],
-
-
+      color: "black",
+      fontSize:"20px",
+      fontWeight:400,
       }
       },
+
+
       opposite: true
       }],
+
+
       tooltip: {
       crosshairs: true,
       shared: true
@@ -230,6 +245,9 @@
       }
       }
       },
+
+
+
       series: [{
       yAxis:1,
       name: '이용횟수',
@@ -249,9 +267,10 @@
        
       data: [{
       y: {{save.0}},}, {{save.1}}, {{save.2}}]
-      }],
+      }
+      ],
 
-
+// *********************************************
 
 
       options: {
@@ -264,7 +283,22 @@
 
           }]
         }
-      }
+      },
+
+
+      
+      credits : false,
+
+      legend: {
+
+        x: 100,
+        verticalAlign: 'top',//정렬
+        y: 70,
+        itemStyle: {color: "black", fontSize:"25px"} //글자스타일
+      },
+
+
+
 
       });
 
