@@ -405,6 +405,23 @@
   </div>
 
   
+
+  <div id="modal_juklib_button1" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+       <div>텀블러 포인트 적립</div>
+    </div>
+  </div>
+
+  
 {% comment %}  {% endcomment %}
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
@@ -556,6 +573,15 @@
   });
 
 
+  const modal_1 = document.getElementById("modal_juklib_button1");
+  const buttonAddFeed_1 = document.getElementById("juklib_button1");
+  buttonAddFeed_1.addEventListener("click", e => {
+      modal_1.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+
+
   
   // 모달 닫기 코드
   const buttonCloseModal = document.getElementById("close_modal");
@@ -573,6 +599,13 @@
   const buttonCloseModal2 = document.getElementById("close_modal2");
   buttonCloseModal2.addEventListener("click", e => {
       modal2.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+
+  const buttonCloseModal_1 = document.getElementById("close_modal_1");
+  buttonCloseModal_1.addEventListener("click", e => {
+      modal_1.style.display = "none";
       document.body.style.overflowY = "visible";
   });
 
