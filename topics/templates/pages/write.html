@@ -183,12 +183,14 @@
         if (post.image.url) {
           $('#img').attr('src', post.image.url);
         }
+        $("#pk").val(localStorage.pk);
       });
 
       pk = localStorage.pk
     </script>
     <script>
       $(function () {
+
         $('#img').click(function () {
           $('#file').click()
         });
@@ -253,6 +255,7 @@
             <div id="title">
               <div id="a">일기 작성하기</div>
               <div id="b">100자 내외</div>
+              <input name='pk' id="pk" style="display:none;">
             </div>
             <textarea name="comment" id="comment" placeholder='내용을 작성해주세요'>{{com}}</textarea>
             <div id="button">
