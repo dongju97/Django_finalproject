@@ -428,3 +428,20 @@ height: 260px;
 margin-bottom: 30px;
 margin-left: 70px;
 }
+
+
+#pc_bt{
+  background-color: transparent;
+  border: 0px;
+}
+
+#pc_img{
+  width: 40px;
+  height: 40px;
+  margin-left: 510px;
+}
+
+#yyy{
+  display: flex;
+  flex-direction: row;
+}

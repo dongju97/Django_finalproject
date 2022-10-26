@@ -30,13 +30,13 @@ def graph(request,pk):
     }
     return render(request, "pages/graph.html",context)
 
-def feed(request):
+def feed(request,pk):
     if request.method=='POST':
         sel_cat = request.POST.get('shop')
         comment = request.POST.get('comment')
         image = request.FILES['image']
 
-        diary = Diary(userid=1, comment = comment, image = image, cat_selected=sel_cat)
+        diary = Diary(userid=pk, comment = comment, image = image, cat_selected=sel_cat)
         diary.save()
 
         uploaded_img_qs = Diary.objects.filter().last()
@@ -88,6 +88,7 @@ def save(request):
 
 
 def write(request):
+    
     return render(request, "pages/write.html")
 
 

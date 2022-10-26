@@ -13,7 +13,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-    <script src="/path/to/jquery.easy-pie-chart.js"></script>
 
 
 
@@ -57,24 +56,6 @@
    
   <link rel="stylesheet" href="{% static 'css/topics/main.css' %}">
 
-  {% comment %} <script>
-    $(function(){$('#alert').on('click',function(){
-      $.dialogbox({
-      type:'msg',
-      title:'Alert Title',
-      icon:1,
-      content:'Alert Content',
-      btn:['Confirm'],
-      call:[
-        function(){
-          $.dialogbox.close(); 
-        }
-      ]
-    });
-    });
-  });
-  </script> {% endcomment %}
-
 
   </head>
 
@@ -84,12 +65,17 @@
       <div class="con">
 
           <div id="box1">
+            <div id="yyy">
             <div class="profile-id">
               {{one.name}}
+
             </div>
+            <button id="pc_bt"><img id="pc_img" src="{% static 'images/pencil.png' %}"></button>
+          </div>
 
             <div class="profile" style="display: flex; flex-direction: row; justify-content: space-between;">
-              <div class="profile-img-box"  style="width: 180px; height: 180px;">
+              <div class="profile-img-box"  style="width: 180px; height: 180px;" 
+              onclick="location.href='{% url 'topics:write' one.pk %}'">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
               </div>
 
@@ -97,17 +83,17 @@
                 <div class="under_profile_box" style=" width: 50%;">
 
                   <div class="point">
-                    {{point.used_point}}
+                    {{point.used_point}}P
                   </div>
                   
-                  <div class="point_tag" onclick="location.href='{% url 'topics:point' one.pk %}'">
+                  <div class="point_tag" onclick="location.href='{% url 'topics:point' one.pk%}'">
                     내 포인트
                   </div>
                 </div>
 
                 <div class="under_profile_box" style="width: 100%;">
                   <div class="point">
-                    {{savePoint}}
+                    {{savePoint}}g
                   </div>
                   <div class="point_tag">
                     탄소 세이브
@@ -128,7 +114,6 @@
             </div>
 
           </div>
-
 
           
  <!--  ************************************  -->
