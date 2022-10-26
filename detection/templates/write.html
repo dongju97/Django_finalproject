@@ -179,6 +179,13 @@
       }
     </style>
     <script>
+        $(document).ready(function(){
+            if (post.image.url){
+                $('#img').attr('src', post.image.url);
+            }
+        });
+    </script>
+    <script>
       $(function () {
         $('#img').click(function () {
           $('#file').click()
@@ -212,19 +219,19 @@
           {% csrf_token %}
           <div class="select">
             <div>
-              <input type="radio" id="select" name="shop">
+              <input type="radio" id="select" name="shop" value='tumbler' checked="checked">
               <label for="select">
                 <div class="labaelDiv">텀블러</div>
               </label>
             </div>
             <div>
-              <input type="radio" id="select2" name="shop">
+              <input type="radio" id="select2" name="shop" value='shopping bag'>
               <label for="select2">
                 <div class="labaelDiv">장바구니</div>
               </label>
             </div>
             <div>
-              <input type="radio" id="select3" name="shop">
+              <input type="radio" id="select3" name="shop" value='container'>
               <label for="select3">
                 <div class="labaelDiv">다회용기</div>
               </label>
@@ -236,6 +243,7 @@
             <div>
               <input type="file" id="file" name="image" accept="image/*" style="display:none;">
               <img id='img' name='img' src="{% static 'images/카메라.png' %}">
+              {% comment %} <img id='img' name='img' src="{% static 'images/카메라.png' %}"> {% endcomment %}
             </div>
           </div>
         </div>
@@ -245,7 +253,7 @@
               <div id="a">일기 작성하기</div>
               <div id="b">100자 내외</div>
             </div>
-            <textarea name="comment" id="comment">{{com}}</textarea>
+            <textarea name="comment" id="comment" placeholder='내용을 작성해주세요'>{{com}}</textarea>
             <div id="button">
               <input type="submit" id="wt_bt" value='등록하기'>
             </div>

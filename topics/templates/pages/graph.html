@@ -3,25 +3,8 @@
 {% block content %}
 
 
-
 <head>
-  <style>
 
-    #juklib_button1,#juklib_button2,#juklib_button3 {
-
-      background-color: rgb(164, 198, 164);
-      border : 0;
-      width: 200px;
-      height: 75px;
-      border-radius: 18px;
-      color: white;
-      margin-left: 30px;
-      margin-top: 15px;
-      font-size: 35px;
-      box-shadow: 2px 2px 13px rgb(220, 218, 218);
-  }
-  
-  </style>
 
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <!-- Bootstrap CSS -->
@@ -37,7 +20,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-
             $('ul.tabs li').click(function(){
                 var tab_id = $(this).attr('data-tab');
                 
@@ -46,96 +28,15 @@
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');            
             });
-
-            $('#juklib_button1').click(function(){
-              kind = $(this).val();
-              pk = localStorage.pk
-              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
-              
-              $.ajax({
-                type:'POST',
-                url:'/getPoint/',
-                dataType:'json',
-                data:{
-                  'kind':kind, 
-                  'pk':pk
-                },
-                      success:function(json){
-                           alert(json.msg);
-                   },
-                      error : function(xhr,errmsg,err) {
-                        console.log(xhr.status + ": " + xhr.responseText); 
-        }
-
-               
-            });
-   
-        
-
-        
-     });
-     $('#juklib_button2').click(function(){
-      kind = $(this).val();
-      pk = localStorage.pk
-      {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
-      
-      $.ajax({
-        type:'POST',
-        url:'/getPoint/',
-        dataType:'json',
-        data:{
-          'kind':kind, 
-          'pk':pk
-        },
-              success:function(json){
-                   alert(json.msg);
-           },
-              error : function(xhr,errmsg,err) {
-                console.log(xhr.status + ": " + xhr.responseText); 
-}
-
-       
-    });
-
-
-
-
-});
-            $('#juklib_button3').click(function(){
-              kind = $(this).val();
-              pk = localStorage.pk
-              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
-              
-              $.ajax({
-                type:'POST',
-                url:'/getPoint/',
-                dataType:'json',
-                data:{
-                  'kind':kind, 
-                  'pk':pk
-                },
-                      success:function(json){
-                           alert(json.msg);
-                   },
-                      error : function(xhr,errmsg,err) {
-                        console.log(xhr.status + ": " + xhr.responseText); 
-        }
-
-               
-            });
-   
-        
-
-        
-     });
-    });
+        });
     </script>
+
+    
 </head>
 
 
 <body>
-
-
+  {% comment %} <div id="add_feed" style="font-size:30px;">안녕</div> {% endcomment %}
   <div id="aaaaa">
     <figure class="highcharts-figure">
       <div id="graph"></div>
@@ -180,52 +81,21 @@
         }
         
       },
-      yAxis: [{ // Primary yAxis
-        labels: {
-            format: '{value}°C',
-            style: {
-                color: Highcharts.getOptions().colors[2]
-            }
-        },
+      yAxis: {
         title: {
-            text: 'Temperature',
-            style: {
-                color: Highcharts.getOptions().colors[2]
-            }
-        },
-        opposite: true
-
-    }, { // Secondary yAxis
-        gridLineWidth: 0,
-        title: {
-            text: '이용횟수',
-            style: {
-                color: Highcharts.getOptions().colors[0]
-            }
+          style:{
+            fontSize: "35px",
+            fontWeight:'500',
+          },
+          text: '사용횟수/ 탄소 절감량'
         },
         labels: {
-            format: '{value}회',
-            style: {
-                color: Highcharts.getOptions().colors[0]
-            }
+          
+          formatter: function () {
+            return this.value + '°';
+          }
         }
-
-    }, { // Tertiary yAxis
-        gridLineWidth: 0,
-        title: {
-            text: '탄소 감축량',
-            style: {
-                color: Highcharts.getOptions().colors[2]
-            }
-        },
-        labels: {
-            format: '{value}g',
-            style: {
-                color: Highcharts.getOptions().colors[2]
-            }
-        },
-        opposite: true
-    }],
+      },
       tooltip: {
         crosshairs: true,
         shared: true
@@ -240,7 +110,7 @@
         }
       },
       series: [{
-        yAxis:1,
+        
         name: '이용횟수',
         marker: {
           symbol: 'square'
@@ -248,12 +118,10 @@
         data: {{count}}
 
       }, {
-        yAxis:2,
         name: '탄소절감량',
         marker: {
           symbol: 'diamond'
         },
-       
         data: [{
           y: {{save.0}},}, {{save.1}}, {{save.2}}]
       }]
@@ -275,19 +143,20 @@
         </div>
     </div>
 
-{% comment %} #tab-1 > .hall_box > #aa > .hall_p >#head_1 > #tum_byn{% endcomment %}
+
 	<div id="tab-1" class="tab-content current">
+
         <div class="hall_box">
             <div id="aa">
                 <div class="hall_p">
                     <div id="head_1">적립가능 포인트
-                      <button id="tum_btn" class="inline" style="background-color:transparent; border:0px;">
-                        <img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+                      <button id="tum_img" class="inline" style="background-color:transparent; border:0px;">
+                        <img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:5px;" src="{% static 'images/question.png' %}">
                       </button>
                     </div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
-                        <button id="juklib_button1" class="inline" value="tumbler">적립</button>
+                        <button id="juklib_button" class="inline">적립</button>
                     </div>
         
                 </div>
@@ -299,32 +168,56 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">{{count.0}}회</div>
+                        <div class="count">2회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 이용내역</div>
-                        <div class="count">{{count.0}}회</div>
+                        <div class="count">10회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 아낀 탄소량</div>
-                        <div class="count">{{save.0}}g</div>
+                        <div class="count">10g</div>
                     </div>
         
                 </div>
             </div>
         </div>
 	</div>
+
+  <div id="modal_tum_img" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+        <div id="img_modal">
+          <img id="img_modal_1" src="{% static 'images/텀_설.png' %}" alt="">
+  
+        </div>
+    </div>
+  </div>
+
+  
 {% comment %}  {% endcomment %}
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
+     
+      
+
+
  
       <div id="aa">
           <div class="hall_p">
-            <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+            <div id="head_1">적립가능 포인트<button id="jang_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
             </button></div>
-              <div id="head_2">32P</div>
+              <div id="head_2">50P</div>
               <div id="head_3">
-                  <button id="juklib_button2" class="inline" value="bag">적립</button>
+                  <button id="juklib_button" class="inline">적립</button>
               </div>
   
           </div>
@@ -336,21 +229,43 @@
           <div class="pyo">
               <div class="pyo_1">
                   <div class="title">이번주이용내역</div>
-                  <div class="count">{{count.1}}회</div>
+                  <div class="count">1회</div>
               </div>
               <div class="pyo_1">
                   <div class="title">총 이용내역</div>
-                  <div class="count">{{count.1}}회</div>
+                  <div class="count">10회</div>
               </div>
               <div class="pyo_1">
                   <div class="title">총 아낀 탄소량</div>
-                  <div class="count">{{save.1}}g</div>
+                  <div class="count">10g</div>
               </div>
   
           </div>
       </div>
   </div>
 </div>
+
+
+<div id="modal_jang_img" class="modal_overlay">
+  <div class="modal_window">
+      <div class="modal_title">
+          <div class="modal_title_side"></div>
+          <div>  </div>
+          <div class="modal_title_side">
+              <span id="close_modal1" class="material-icons-outlined">
+                  확인
+              </span>
+          </div>
+      </div>
+      <div id="img_modal">
+        <img id="img_modal_1" src="{% static 'images/장_설.png' %}" alt="">
+
+      </div>
+  </div>
+</div>
+
+
+
  {% comment %}  {% endcomment %}
 	<div id="tab-3" class="tab-content">
         <div class="hall_box">
@@ -359,11 +274,11 @@
         
             <div id="aa">
                 <div class="hall_p">
-                  <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
+                  <div id="head_1">적립가능 포인트<button id="da_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
                   </button></div>
-                    <div id="head_2">200P</div>
+                    <div id="head_2">50P</div>
                     <div id="head_3">
-                        <button id="juklib_button3" class="inline" value="container">적립</button>
+                        <button id="juklib_button" class="inline">적립</button>
                     </div>
         
                 </div>
@@ -375,26 +290,91 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">{{count.2}}회</div>
+                        <div class="count">1회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 이용내역</div>
-                        <div class="count">{{count.2}}회</div>
+                        <div class="count">10회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 아낀 탄소량</div>
-                        <div class="count">{{save.2}}g</div>
+                        <div class="count">10g</div>
                     </div>
         
                 </div>
             </div>
 	</div>
-<!-- container -->
+
+  <div id="modal_da_img" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal2" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+        <div id="img_modal">
+          <img id="img_modal_1" src="{% static 'images/다_설.png' %}" alt="">
+  
+        </div>
+    </div>
+  </div>
+{% comment %}  {% endcomment %}
 </div>
 
 
 
 
+
+<script>
+
+  const modal = document.getElementById("modal_tum_img");
+  const buttonAddFeed = document.getElementById("tum_img");
+  buttonAddFeed.addEventListener("click", e => {
+      modal.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+
+  const modal1 = document.getElementById("modal_jang_img");
+  const buttonAddFeed1 = document.getElementById("jang_img");
+  buttonAddFeed1.addEventListener("click", e => {
+      modal1.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+  const modal2 = document.getElementById("modal_da_img");
+  const buttonAddFeed2 = document.getElementById("da_img");
+  buttonAddFeed2.addEventListener("click", e => {
+      modal2.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+
+  
+  // 모달 닫기 코드
+  const buttonCloseModal = document.getElementById("close_modal");
+  buttonCloseModal.addEventListener("click", e => {
+      modal.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal1 = document.getElementById("close_modal1");
+  buttonCloseModal1.addEventListener("click", e => {
+      modal1.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal2 = document.getElementById("close_modal2");
+  buttonCloseModal2.addEventListener("click", e => {
+      modal2.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+</script>
 
 </body>
 

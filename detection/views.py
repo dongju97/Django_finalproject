@@ -8,8 +8,8 @@ from .models import Diary
 # Create your views here.
 def feed(request):
     if request.method=='POST':
+        sel_cat = request.POST.get('shop')
         comment = request.POST.get('comment')
-
         image = request.FILES['image']
 
         diary = Diary(userid=1, comment = comment, image = image)
@@ -27,18 +27,19 @@ def feed(request):
         results = model(img, size=640)
         results.save(save_dir='media', exist_ok=True)
         
-        return render(request, 'feed.html')
+        labels = results.pandas().xyxy[0]['name']
+        
+        for label in labels:
+            if label == sel_cat:
+                return render(request, 'feed.html')
+
+        Diary.objects.filter().last().delete()
+        context = {
+            'com': comment,
+        }
+        return render(request, 'write.html', context)
     else:
         return render(request, 'feed.html')
 
 def write(request):
-    if request.method=='POST':
-        comment = request.POST.get('comment')
-        # #image = request.FILES['image']
-        context = {
-            'com': comment,
-            #'image': image,
-        }
-        return render(request, 'write.html')
-    else:
-        return render(request, 'write.html')
+    return render(request, 'write.html')
