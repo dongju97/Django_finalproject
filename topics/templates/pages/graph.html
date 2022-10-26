@@ -160,7 +160,6 @@
       title: {
       style: {//차트 전체 스타일 지정
       color: 'black',
-      {% comment %} background-color: transparent, {% endcomment %}
       fontFamily: 'NanumSquareRound',
       fontWeight:'700',
       fontSize:'50px'
@@ -179,19 +178,7 @@
        
       },
       yAxis: [{ // Primary yAxis
-      labels: {
-      format: '{value}°C',
-      style: {
-      color: Highcharts.getOptions().colors[2]
-      }
-      },
-      title: {
-      text: 'Temperature',
-      style: {
-      color: Highcharts.getOptions().colors[2]
-      }
-      },
-      opposite: true
+
       
       }, { // Secondary yAxis
       gridLineWidth: 0,
@@ -199,13 +186,15 @@
       text: '이용횟수',
       style: {
       color: Highcharts.getOptions().colors[0],
-      fontSize: '30px'
+      fontSize: '30px',
       }
       },
       labels: {
       format: '{value}회',
       style: {
-      color: Highcharts.getOptions().colors[0]
+      color: Highcharts.getOptions().colors[0],
+  
+
       }
       }
       
@@ -220,7 +209,9 @@
       labels: {
       format: '{value}g',
       style: {
-      color: Highcharts.getOptions().colors[2]
+      color: Highcharts.getOptions().colors[2],
+
+
       }
       },
       opposite: true
@@ -243,9 +234,11 @@
       yAxis:1,
       name: '이용횟수',
       marker: {
-      symbol: 'square'
+      symbol: 'square',
       },
-      data: {{count}}
+  
+      data: {{count}},
+     
       
       }, {
       yAxis:2,
@@ -256,8 +249,28 @@
        
       data: [{
       y: {{save.0}},}, {{save.1}}, {{save.2}}]
-      }]
+      }],
+
+
+
+
+      options: {
+        scales: {
+          xAxes: [{
+            ticks:{
+              fontColor : 'rgba(12, 13, 13, 1)',
+              fontSize : "30px"
+            },
+
+          }]
+        }
+      }
+
       });
+
+
+
+
   </script>
 
 {% comment %} /graph {% endcomment %}
