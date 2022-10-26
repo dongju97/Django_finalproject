@@ -68,18 +68,22 @@ def feed(request,pk):
 
 def point(request,pk):
     user = UserSummary.objects.get(userid = pk)
+    point = PointHistory.objects.filter(userid=pk)
     
     tumbler = user.tumbler * 20
     container = user.container *30
     bag = user.bag * 10
-    
     acc = tumbler + container + bag
+    
+    
+    
     context={
         'user':user,
+        'point':point,
         'tumbler': tumbler,
         'container': container,
         'bag':bag,
-        'acc':acc
+        'acc':acc,
     }
     return render(request, "pages/point.html", context)
 
