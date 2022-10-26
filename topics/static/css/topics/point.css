@@ -142,11 +142,12 @@ body{
 #day{
     font-size: 37px;
     height: 70px;
+    text-align: left;
     padding-top: 40px;
     margin: 0px;
 }
 .content_1{
-    border: 1px solid black;
+    
     display: flex;
     flex-direction: row;
     padding: 5px;
@@ -156,7 +157,7 @@ body{
 .content div{
     font-size: 40px;
     height: 130px;
-    border: 1px solid black;
+    
     text-align: center;
     padding-top: 30px;
     padding-left: 40px;
