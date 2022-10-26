@@ -30,7 +30,7 @@ def graph(request,pk):
     }
     return render(request, "pages/graph.html",context)
 
-def feed(request,pk):
+def feed(request):
     if request.method=='POST':
         sel_cat = request.POST.get('shop')
         comment = request.POST.get('comment')

@@ -13,7 +13,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-
+    
 
 
     <script>
@@ -54,6 +54,9 @@
 
   </script>
    
+  <style>
+   
+  </style>
   <link rel="stylesheet" href="{% static 'css/topics/main.css' %}">
 
 
@@ -70,12 +73,12 @@
               {{one.name}}
 
             </div>
-            <button id="pc_bt"><img id="pc_img" src="{% static 'images/pencil.png' %}"></button>
+            <button id="pc_bt" onclick="location.href='{% url 'topics:write'%}'"><img id="pc_img" src="{% static 'images/pencil.png' %}" ></button>
           </div>
 
             <div class="profile" style="display: flex; flex-direction: row; justify-content: space-between;">
               <div class="profile-img-box"  style="width: 180px; height: 180px;" 
-              onclick="location.href='{% url 'topics:write'%}'">
+              >
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1324185005883486208/gOBh4kKR_400x400.jpg">
               </div>
 
