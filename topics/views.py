@@ -146,6 +146,7 @@ def popup(request):
 # Create your views here.
 def main(request, pk):
     one = User.objects.get(pk = pk)
+    
     try:
         point = UserSummary.objects.get(userid = pk)
     except UserSummary.DoesNotExist:
@@ -153,10 +154,16 @@ def main(request, pk):
                             tumbler=0, bag=0, container=0)
         point.save()
     savePoint = point.tumbler*50 + point.bag*32 + point.container*200
+    
+    #탄소등급 이미지
+    acc = point.accumulated_point 
+    
+    
     context={
         'one':one,
         'point':point,
-        'savePoint':savePoint
+        'savePoint':savePoint,
+        'acc':acc
     }
     return render(request, "topics/main.html", context)
 
