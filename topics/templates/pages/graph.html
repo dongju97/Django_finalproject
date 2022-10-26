@@ -5,7 +5,23 @@
 
 
 <head>
+  <style>
 
+    #juklib_button1,#juklib_button2,#juklib_button3 {
+
+      background-color: rgb(164, 198, 164);
+      border : 0;
+      width: 200px;
+      height: 75px;
+      border-radius: 18px;
+      color: white;
+      margin-left: 30px;
+      margin-top: 15px;
+      font-size: 35px;
+      box-shadow: 2px 2px 13px rgb(220, 218, 218);
+  }
+  
+  </style>
 
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
     <!-- Bootstrap CSS -->
@@ -21,6 +37,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
+
             $('ul.tabs li').click(function(){
                 var tab_id = $(this).attr('data-tab');
                 
@@ -29,12 +46,89 @@
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');            
             });
-        });
-    </script>
-    <script>
-      $(fuction(){
 
-      });
+            $('#juklib_button1').click(function(){
+              kind = $(this).val();
+              pk = localStorage.pk
+              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+              
+              $.ajax({
+                type:'POST',
+                url:'/getPoint/',
+                dataType:'json',
+                data:{
+                  'kind':kind, 
+                  'pk':pk
+                },
+                      success:function(json){
+                           alert(json.msg);
+                   },
+                      error : function(xhr,errmsg,err) {
+                        console.log(xhr.status + ": " + xhr.responseText); 
+        }
+
+               
+            });
+   
+        
+
+        
+     });
+     $('#juklib_button2').click(function(){
+      kind = $(this).val();
+      pk = localStorage.pk
+      {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+      
+      $.ajax({
+        type:'POST',
+        url:'/getPoint/',
+        dataType:'json',
+        data:{
+          'kind':kind, 
+          'pk':pk
+        },
+              success:function(json){
+                   alert(json.msg);
+           },
+              error : function(xhr,errmsg,err) {
+                console.log(xhr.status + ": " + xhr.responseText); 
+}
+
+       
+    });
+
+
+
+
+});
+            $('#juklib_button3').click(function(){
+              kind = $(this).val();
+              pk = localStorage.pk
+              {% comment %} kind: 탄소량 / pk : 사용자 pk {% endcomment %}
+              
+              $.ajax({
+                type:'POST',
+                url:'/getPoint/',
+                dataType:'json',
+                data:{
+                  'kind':kind, 
+                  'pk':pk
+                },
+                      success:function(json){
+                           alert(json.msg);
+                   },
+                      error : function(xhr,errmsg,err) {
+                        console.log(xhr.status + ": " + xhr.responseText); 
+        }
+
+               
+            });
+   
+        
+
+        
+     });
+    });
     </script>
 </head>
 
@@ -86,21 +180,52 @@
         }
         
       },
-      yAxis: {
+      yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}°C',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
         title: {
-          style:{
-            fontSize: "35px",
-            fontWeight:'500',
-          },
-          text: '사용횟수/ 탄소 절감량'
+            text: 'Temperature',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
+        opposite: true
+
+    }, { // Secondary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: '이용횟수',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
         },
         labels: {
-          
-          formatter: function () {
-            return this.value + '°';
-          }
+            format: '{value}회',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
         }
-      },
+
+    }, { // Tertiary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: '탄소 감축량',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
+        labels: {
+            format: '{value}g',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
+        opposite: true
+    }],
       tooltip: {
         crosshairs: true,
         shared: true
@@ -115,7 +240,7 @@
         }
       },
       series: [{
-        
+        yAxis:1,
         name: '이용횟수',
         marker: {
           symbol: 'square'
@@ -123,10 +248,12 @@
         data: {{count}}
 
       }, {
+        yAxis:2,
         name: '탄소절감량',
         marker: {
           symbol: 'diamond'
         },
+       
         data: [{
           y: {{save.0}},}, {{save.1}}, {{save.2}}]
       }]
@@ -160,7 +287,7 @@
                     </div>
                     <div id="head_2">50P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline">적립</button>
+                        <button id="juklib_button1" class="inline" value="tumbler">적립</button>
                     </div>
         
                 </div>
@@ -172,15 +299,15 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">2회</div>
+                        <div class="count">{{count.0}}회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 이용내역</div>
-                        <div class="count">10회</div>
+                        <div class="count">{{count.0}}회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 아낀 탄소량</div>
-                        <div class="count">10g</div>
+                        <div class="count">{{save.0}}g</div>
                     </div>
         
                 </div>
@@ -190,18 +317,14 @@
 {% comment %}  {% endcomment %}
 <div id="tab-2" class="tab-content">
   <div class="hall_box">
-     
-      
-
-
  
       <div id="aa">
           <div class="hall_p">
             <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
             </button></div>
-              <div id="head_2">50P</div>
+              <div id="head_2">32P</div>
               <div id="head_3">
-                  <button id="juklib_button" class="inline">적립</button>
+                  <button id="juklib_button2" class="inline" value="bag">적립</button>
               </div>
   
           </div>
@@ -213,15 +336,15 @@
           <div class="pyo">
               <div class="pyo_1">
                   <div class="title">이번주이용내역</div>
-                  <div class="count">1회</div>
+                  <div class="count">{{count.1}}회</div>
               </div>
               <div class="pyo_1">
                   <div class="title">총 이용내역</div>
-                  <div class="count">10회</div>
+                  <div class="count">{{count.1}}회</div>
               </div>
               <div class="pyo_1">
                   <div class="title">총 아낀 탄소량</div>
-                  <div class="count">10g</div>
+                  <div class="count">{{save.1}}g</div>
               </div>
   
           </div>
@@ -238,9 +361,9 @@
                 <div class="hall_p">
                   <div id="head_1">적립가능 포인트<button id="qu" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
                   </button></div>
-                    <div id="head_2">50P</div>
+                    <div id="head_2">200P</div>
                     <div id="head_3">
-                        <button id="juklib_button" class="inline">적립</button>
+                        <button id="juklib_button3" class="inline" value="container">적립</button>
                     </div>
         
                 </div>
@@ -252,15 +375,15 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">1회</div>
+                        <div class="count">{{count.2}}회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 이용내역</div>
-                        <div class="count">10회</div>
+                        <div class="count">{{count.2}}회</div>
                     </div>
                     <div class="pyo_1">
                         <div class="title">총 아낀 탄소량</div>
-                        <div class="count">10g</div>
+                        <div class="count">{{save.2}}g</div>
                     </div>
         
                 </div>

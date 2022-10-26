@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -22,9 +23,11 @@ class UserSummary(models.Model):
     
 class Diary(models.Model):
     userid = models.IntegerField() #user pk
+    cat_selected = models.CharField(max_length=15, null=False, default="no")
     create_at = models.DateTimeField(auto_now_add=True) #등록일자
     image = models.ImageField() #등록 이미지
     comment = models.TextField() #글쓰기 내용
+    acc_bool = models.BooleanField(default=False)
 
 class PointHistory(models.Model):
     userid = models.IntegerField() #user pk

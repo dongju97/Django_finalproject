@@ -2,29 +2,35 @@ from itertools import accumulate
 from logging import exception
 import json
 from multiprocessing import context
+from re import X
 from django.shortcuts import render, redirect
 from . models import User
 from . models import UserSummary
 from . models import PointHistory
 from . models import Diary
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 #페이지
 
-def graph(request):
-    save = [1,2,3]
-    count =  [10,9,8]
-    context = {
-        'save' : save,
-        'count' : count,
+def graph(request,pk):
+    user = UserSummary.objects.get(userid = pk)
+    
+    tum = user.tumbler
+    bag = user.bag
+    con = user.container
+    
+    context={
+        'user':user,
+        'count':[tum, bag, con],
+        'save':[tum*50, bag*32, con*200]
     }
     return render(request, "pages/graph.html",context)
-
 
 def feed(request):
     return render(request, "pages/feed.html")
 
 
-def point(request):
+def point(request,pk):
     return render(request, "pages/point.html")
 
 
@@ -90,9 +96,59 @@ def signup(request):
     
     return redirect('topics:main',user.pk)
 
-#포인트 적립
+# 포인트 적립
+@csrf_exempt
 def getPoint(request):
-    msg = "적립이 완료되었습니다!"
+    kind = request.POST.get('kind')
+    pk = request.POST.get('pk')
+    
+    
+    diary = Diary.objects.filter(userid = pk, cat_selected = kind).exclude(acc_bool = True)
+    point = UserSummary.objects.get(userid= pk)
+   
+    
+    #diary에서 false인 게시물 조회하기
+    cnt = 0
+    a = 0
+    b =""
+    msg="사용내역 없음"
+    
+    for i in diary:
+        #Diary table
+        cnt+=1   
+        # print('------',list(i.values()))
+        print('-------',i.acc_bool)
+        #PointHistory
+        if kind =="tumbler":
+            a = 50
+            b = "텀블러 사용 적립"
+            point.tumbler +=1
+            msg = "텀블러 등록 완료"
+            
+        elif kind == "bag":
+            a = 32
+            b = "장바구니 사용 적립"
+            point.bag +=1
+            msg = "장바구니 등록 완료"
+            
+        elif kind == "container":
+            a = 200
+            b = "다회용기 사용 적립"
+            point.container +=1
+            msg = "다회용기 등록 완료"
+        else: 
+            msg="등록실패"  
+            
+        #UserSummary:
+        history = PointHistory(userid=pk, point=a, detail=b)
+        history.save()
+        point.accumulated_point += a
+        point.used_point += a
+        # print(i['acc_bool'])
+        i.acc_bool = True
+        i.save()
+
+    
     context ={
         'msg':msg
     }

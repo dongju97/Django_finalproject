@@ -163,7 +163,7 @@ ul.tabs li.current{
 }
 
 
-#juklib_button{
+#juklib_button1,#juklib_button2,#juklib_button3 {
 
     background-color: rgb(164, 198, 164);
     border : 0;

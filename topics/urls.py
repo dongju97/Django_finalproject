@@ -6,7 +6,7 @@ app_name='topics'
 
 urlpatterns = [
     #페이지
-    path('graph/', views.graph, name="graph"),
+    path('graph/<int:pk>', views.graph, name="graph"),
     path('feed/', views.feed, name="feed"),
     path('point/', views.point, name="point"),
     path('save/', views.save, name="save"),
@@ -21,5 +21,5 @@ urlpatterns = [
     path('signup/', views.signup, name="signup"),
     
     #포인트 적립
-    path('getPoint/<int:pk>', views.getPoint, name="getPoint"),
+    path('getPoint/', views.getPoint, name="getPoint"),
 ]
