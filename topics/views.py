@@ -144,6 +144,7 @@ def getPoint(request):
         history.save()
         point.accumulated_point += a
         point.used_point += a
+        point.save()
         # print(i['acc_bool'])
         i.acc_bool = True
         i.save()
