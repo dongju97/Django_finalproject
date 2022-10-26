@@ -97,6 +97,12 @@ def popup(request):
     return render(request, "pages/popup.html")
 
 
+def graph_1(request):
+    return render(request, "pages/graph_1.html")
+
+
+
+
 # Create your views here.
 def main(request, pk):
     one = User.objects.get(pk = pk)

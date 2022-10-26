@@ -7,6 +7,7 @@ app_name='topics'
 urlpatterns = [
     #페이지
     path('graph/<int:pk>', views.graph, name="graph"),
+    path('graph_1/', views.graph_1, name="graph_1"),
     path('feed/', views.feed, name="feed"),
     path('point/<int:pk>', views.point, name="point"),
     path('save/', views.save, name="save"),
