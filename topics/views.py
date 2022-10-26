@@ -94,22 +94,31 @@ def save(request,pk):
     diary = Diary.objects.filter(userid = pk)
     
     tumbler = user.tumbler * 50
-    container = user.container * 32
-    bag = user.bag * 200
+    container = user.container * 200
+    bag = user.bag * 32
     acc = tumbler + container + bag
     
     
     today = DateFormat(datetime.now()).format('Ymd')
-    
-    
+    today_g = 0
+    for dd in diary:
+        day = str(dd.create_at.year) + str(dd.create_at.month) + str(dd.create_at.day)
+        if day == today:
+            if dd.cat_selected == "tumbler":
+                today_g += 50
+            elif dd.cat_selected == "bag":
+                today_g += 32
+            else:
+                today_g +=200
+        
     context={
         'user':user,
         'tumbler': tumbler,
         'container': container,
         'bag':bag,
         'acc':acc,
-        'today':today
-        
+        'today_g':today_g,
+        'diary':diary           
     }
     
     return render(request, "pages/save.html",context)
