@@ -58,7 +58,14 @@
               'pk':pk
               },
               success:function(json){
-              alert(json.msg);
+                msg=json.msg
+                if(msg == '사용내역 없음'){
+                  alert("적립가능한 포인트가 없습니다.")
+                }else if(msg=="텀블러"){
+
+                }else{
+                  alert("포인트가 적립되지 않았습니다.")
+                }
               },
               error : function(xhr,errmsg,err) {
               console.log(xhr.status + ": " + xhr.responseText);
@@ -85,7 +92,15 @@
               'pk':pk
               },
               success:function(json){
-              alert(json.msg);
+                msg=json.msg
+                if(msg == '사용내역 없음'){
+                  alert("적립가능한 포인트가 없습니다.")
+                }else if(msg=="장바구니"){
+
+                }else{
+                  alert("포인트가 적립되지 않았습니다.")
+                }
+              
               },
               error : function(xhr,errmsg,err) {
               console.log(xhr.status + ": " + xhr.responseText);
@@ -112,7 +127,15 @@
               'pk':pk
               },
               success:function(json){
-              alert(json.msg);
+                msg=json.msg
+                if(msg == '사용내역 없음'){
+                  alert("적립가능한 포인트가 없습니다.")
+                }else if(msg=="다회용기"){
+
+                }else{
+                  alert("포인트가 적립되지 않았습니다.")
+                }
+              
               },
               error : function(xhr,errmsg,err) {
               console.log(xhr.status + ": " + xhr.responseText);

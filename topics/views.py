@@ -101,11 +101,6 @@ def popup(request):
     return render(request, "pages/popup.html")
 
 
-def graph_1(request):
-    return render(request, "pages/graph_1.html")
-
-
-
 
 # Create your views here.
 def main(request, pk):
@@ -184,19 +179,19 @@ def getPoint(request):
             a = 20
             b = "텀블러 사용 적립"
             point.tumbler +=1
-            msg = "텀블러 등록 완료"
+            msg = "텀블러"
             
         elif kind == "bag":
             a = 10
             b = "장바구니 사용 적립"
             point.bag +=1
-            msg = "장바구니 등록 완료"
+            msg = "장바구니"
             
         elif kind == "container":
             a = 30
             b = "다회용기 사용 적립"
             point.container +=1
-            msg = "다회용기 등록 완료"
+            msg = "다회용기"
         else: 
             msg="등록실패"  
             
