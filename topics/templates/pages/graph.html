@@ -407,17 +407,28 @@
   
 
   <div id="modal_juklib_button1" class="modal_overlay">
-    <div class="modal_window">
-        <div class="modal_title">
-            <div class="modal_title_side"></div>
-            <div>  </div>
-            <div class="modal_title_side">
-                <span id="close_modal_1" class="material-icons-outlined">
-                    확인
-                </span>
+    <div class="modal_window_coin">
+      <div id="juklib_modal_content">
+          <img id="coin_img" src="{% static 'images/coin.gif' %}">
+          <div id="coin_modal_text">
+            <div id="clap">짝짝짝~ <img src="{% static 'images/clap.png' %}" style="width:80px; height:80px; margin-top:0px;">
             </div>
-        </div>
-       <div>텀블러 포인트 적립</div>
+        
+            <div id="juklib_text">
+              <div id="modal_point">
+                50p
+              </div>
+              <div>가 적립되었어요!</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="modal_title_side_coin">
+        <div id="hwakin"><span id="close_modal_1" class="material-icons-outlined">
+            확인
+        </span></div>
+      </div>
+
     </div>
   </div>
 
