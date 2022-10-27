@@ -35,6 +35,8 @@
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+      static n = 0
+
         $(document).ready(function(){
             $('ul.tabs li').click(function(){
                 var tab_id = $(this).attr('data-tab');
@@ -62,7 +64,7 @@
                 if(msg == '사용내역 없음'){
                   alert("적립가능한 포인트가 없습니다.")
                 }else if(msg=="텀블러"){
-                  point_modal(1)
+                  n=1
                 }else{
                   alert("포인트가 적립되지 않았습니다.")
                 }
@@ -94,11 +96,11 @@
               success:function(json){
                 msg=json.msg
                 if(msg == '사용내역 없음'){
-                  alert("적립가능한 포인트가 없습니다.")
+                  alert("적립가능한 포인트가 없습니다.");
                 }else if(msg=="장바구니"){
-                  point_modal(2)
+                  point_modal(2);
                 }else{
-                  alert("포인트가 적립되지 않았습니다.")
+                  alert("포인트가 적립되지 않았습니다.");
                 }
               
               },
@@ -614,17 +616,17 @@
   });
 
   {% comment %} 모달 {% endcomment %}
-  function point_modal(n){
+  {% comment %} function point_modal(n){
       if(n =1){
 
-      
+       {% endcomment %}
         const modal_1 = document.getElementById("modal_juklib_button1");
         const buttonAddFeed_1 = document.getElementById("juklib_button1");
         buttonAddFeed_1.addEventListener("click", e => {
             modal_1.style.display = "flex";
             document.body.style.overflowY = "hidden"; // 스크롤 없애기
         });
-      }else if(n=2){
+      {% comment %} }else if(n=2){ {% endcomment %}
 
       
 
@@ -634,7 +636,7 @@
             modal_2.style.display = "flex";
             document.body.style.overflowY = "hidden"; // 스크롤 없애기
         });
-      }else{
+      {% comment %} }else{ {% endcomment %}
 
       
 
@@ -645,8 +647,8 @@
             modal_3.style.display = "flex";
             document.body.style.overflowY = "hidden"; // 스크롤 없애기
         });
-      }
-  }
+      {% comment %} }
+  } {% endcomment %}
 
 
   

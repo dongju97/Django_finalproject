@@ -192,8 +192,10 @@ def write(request, pk):
 
 def feed_detail(request, id):
     detail = Diary.objects.get(id=id)
+    id = detail.userid
     context = {
         'detail': detail,
+        'id':id
     }
     return render(request, 'pages/feed_detail.html', context)
 
@@ -219,7 +221,7 @@ def main(request, pk):
     acc = point.accumulated_point
     #Diary 처리
     
-    contents = Diary.objects.filter(userid=pk)
+    contents = Diary.objects.filter(userid=pk).order_by('-id')
     contents_all = Diary.objects.all().order_by('-id')
  
     #하루 달성 이미지
