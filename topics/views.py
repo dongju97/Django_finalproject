@@ -6,7 +6,7 @@ from itertools import accumulate
 from logging import exception
 import json
 from multiprocessing import context
-from re import M, X
+from re import X
 from django.shortcuts import render, redirect
 from . models import User
 from . models import UserSummary
@@ -18,57 +18,19 @@ from datetime import datetime
 from django.utils.dateformat import DateFormat
 
 #페이지
-#그래프 그리기
+
 def graph(request,pk):
     user = UserSummary.objects.get(userid = pk)
-    #적립가능한 물품 불러오기
-    diary = Diary.objects.filter(userid = pk).exclude(acc_bool = True)
-   
-    #물품 개수
+    
     tum = user.tumbler
     bag = user.bag
     con = user.container
     
-    t=0
-    c=0
-    b=0
-    for i in diary:       
-        if i.cat_selected =="tumbler":
-            t+=1
-        elif i.cat_selected=="container":
-            c+=1
-        else:
-            b+=1
-         
-    #한달동안 쓴 내역 불러오기
-    d_list = Diary.objects.filter(userid=pk)
-    
-    #이번달 이용내역
-    month = DateFormat(datetime.now()).format('Ym')
-    m_c=0
-    m_b=0
-    m_t =0
-    
-    for d in d_list:
-        mth = str(d.create_at.year)+str(d.create_at.month)
-        
-        if mth == month:
-            if d.cat_selected =="tumbler":
-                m_t+=1
-            elif d.cat_selected =="container":
-                m_c+=1
-            else:
-                m_b+=1
-
-            
     context={
         'user':user,
         'count':[tum, bag, con],
-        'save':[tum*50, bag*32, con*200], #물품 탄소량
-        'point':[tum * 20, bag * 10, con * 30],#물품 포인트
-        'c_cnt':[t*20,b*10,c*30],#적립가능한 물품 갯수
-        'm_cnt':[m_t, m_b, m_c]
-        }
+        'save':[tum*50, bag*32, con*200]
+    }
     return render(request, "pages/graph.html",context)
 
 def feed(request):
@@ -80,7 +42,6 @@ def feed(request):
         diary = Diary(userid=userid, comment = comment, image = image, cat_selected=sel_cat)
         diary.save()
 
-        
         uploaded_img_qs = Diary.objects.filter().last()
         img_bytes = uploaded_img_qs.image.read()
         img = im.open(io.BytesIO(img_bytes))
@@ -94,32 +55,21 @@ def feed(request):
         results.save(save_dir='media', exist_ok=True)
         
         labels = results.pandas().xyxy[0]['name']
-        #UserSummary에 저장하기
-        user = UserSummary.objects.get(userid=userid)
-        
+
         for label in labels:
             if label == sel_cat:
                 if sel_cat == 'tumbler':
-                    user.tumbler+=1
                     sel_cat = '텀블러'
-                    
                 elif sel_cat == 'bag':
-                    user.bag +=1
                     sel_cat = '장바구니'
-                    
                 elif sel_cat == 'container':
-                    user.container +=1
                     sel_cat = '다회용기'
-                    
                 
                 context = {
                     'com': comment,
                     'image': uploaded_img_qs.image.url,
                     'sel_cat': sel_cat,
                 }
-                
-                
-                user.save()
                 return render(request, 'pages/feed.html', context)
 
         Diary.objects.filter().last().delete()
