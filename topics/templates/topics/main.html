@@ -20,7 +20,7 @@
       $(document).ready(function(){
 
         localStorage.setItem("pk", {{one.pk}})
-        alert(localStorage.pk)
+
           $('ul.tabs li').click(function(){
               
               var tab_id = $(this).attr('data-tab');
@@ -73,7 +73,7 @@
               {{one.name}}
 
             </div>
-            <button id="pc_bt" onclick="location.href='{% url 'topics:write'%}'"><img id="pc_img" src="{% static 'images/pencil.png' %}" ></button>
+            <button id="pc_bt" onclick="location.href='{% url 'topics:write' one.pk%}'"><img id="pc_img" src="{% static 'images/pencil.png' %}" ></button>
           </div>
 
             <div class="profile" style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -105,9 +105,35 @@
                 </div>
 
                 <div class="under_profile_box" style="width: 50%;">
-                  <div class="point">
-                    <img src="{{img}}" height="60px" width="70px">
+                 
+                  {% if acc > 60000%}
+                    <div class="point" id="img_point">               
+                      <img src="{% static 'images/trees.png' %}" height="60px" width="70px"> 
+                    </div>
+                  {% endif %}
+                  {%  if acc > 45000 %}
+                  <div class="point" id="img_point">               
+                    <img src="{% static 'images/trees.png' %}" height="60px" width="70px"> 
                   </div>
+                  {% endif %}
+                  {% if acc > 30000 %}
+                  <div class="point" id="img_point">               
+                    <img src="{% static 'images/leaves.png' %}" height="60px" width="70px"> 
+                  </div>
+                  {% endif %}
+                  {% if acc > 15000 %}
+                  <div class="point" id="img_point">               
+                    <img src="{% static 'images/leaf.png' %}" height="60px" width="70px"> 
+                  </div>
+                  {% endif %}
+                  
+                  <div class="point" id="img_point">               
+                    <img src="{% static 'images/seed.png' %}" height="60px" width="70px"> 
+                  </div>
+                  
+                
+                
+                
                   <div class="point_tag">
                     탄소 등급
                   </div>
@@ -168,11 +194,26 @@
 
 
 <div class="box2">
-  <div id="foot">
+  {% if day_cnt is 3 %}
+   <div id="foot">
     <img class="foot_1" src="{% static 'images/best.png' %}">
+  </div>         
 
-  </div>
-
+  {% elif day_cnt is 2%}
+   <div id="foot">
+    <img class="foot_1" src="{% static 'images/good.png' %}">
+  </div>         
+  
+  {% elif day_cnt is 1 %}
+   <div id="foot">
+    <img class="foot_1" src="{% static 'images/soso.png' %}">
+  </div>         
+  
+  {% else %}
+  <div id="foot">
+    <img class="foot_1" src="{% static 'images/bad.png' %}">
+  </div>  
+{% endif %}
 </div>
 
 
@@ -191,38 +232,33 @@
           </div>
 
  <!--  ************************************  -->
-
-          <div id="tab-1" class="tab-content current">
-            <div class="pt">
-              <div class="photo" onclick="location.href='{% url 'topics:feed' %}'" >
-                1           
-              </div>
-              <div class="photo">
-                1           
-              </div>
-              <div class="photo">
-                1           
-              </div>
-            </div>
-
-          </div>
+ <div id="tab-1" class="tab-content current">
+  <div class="container-fluid" style='display:inline-block;'>
+    <div class="row text-center">
+    {% for content in contents %}
+    <div class='col-4' style="border:2px solid #cecece;" onclick="location.href='{% url 'topics:feed_detail' content.id %}'">
+      <img class='img-fluid' src={{content.image.url}} style='height: 300px;'>
+    </div>  
+    {% endfor %}
+  </div>
+</div>
+</div>
 
  <!--  ************************************  -->
 
-          <div id="tab-2" class="tab-content">
-            <div class="pt">
-              <div class="photo" onclick="location.href='{% url 'topics:feed' %}'" >
-                2           
-              </div>
-              <div class="photo">
-                2           
-              </div>
-              <div class="photo">
-                2           
-              </div>
-            </div>
+ <div id="tab-2" class="tab-content">
+  <div class="container-fluid" style='display:inline-block;'>
+    <div class="row text-center">
+    {% for content in contents_all %}
+    <div class='col-4' style="border:3px solid #cecece;" onclick="location.href='{% url 'topics:feed_detail' content.id %}'">
+      <img class='img-fluid' src={{content.image.url}} style='height: 300px;'>
+    </div>  
+    {% endfor %}
+  </div>
+</div>
+  </div>
 
-          </div>
+</div>
  <!—  ************************************  —>
         </div>
       </div>

@@ -9,9 +9,10 @@ urlpatterns = [
     path('graph/<int:pk>', views.graph, name="graph"),
     
     path('feed/', views.feed, name="feed"),
+    path('feed_detail/<int:id>', views.feed_detail, name="feed_detail"),
     path('point/<int:pk>', views.point, name="point"),
     path('save/<int:pk>', views.save, name="save"),
-    path('write/', views.write, name="write"),
+    path('write/<int:pk>', views.write, name="write"),
     path('popup/', views.popup, name="popup"),
     
     #로그인/회원가입

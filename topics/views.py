@@ -133,9 +133,19 @@ def save(request,pk):
     
     return render(request, "pages/save.html",context)
 
+#다이어리
+def write(request, pk):
+    context={
+        'pk': pk
+    }
+    return render(request, "pages/write.html", context)
 
-def write(request):
-    return render(request, "pages/write.html")
+def feed_detail(request, id):
+    detail = Diary.objects.get(id=id)
+    context = {
+        'detail': detail,
+    }
+    return render(request, 'pages/feed_detail.html', context)
 
 
 def popup(request):
@@ -143,9 +153,10 @@ def popup(request):
 
 
 
-# Create your views here.
+# 메인
 def main(request, pk):
     one = User.objects.get(pk = pk)
+    diary = Diary.objects.filter(userid = pk)
     
     try:
         point = UserSummary.objects.get(userid = pk)
@@ -153,17 +164,35 @@ def main(request, pk):
         point = UserSummary(userid = pk, accumulated_point =0, used_point=0, 
                             tumbler=0, bag=0, container=0)
         point.save()
+        
     savePoint = point.tumbler*50 + point.bag*32 + point.container*200
+    acc = point.accumulated_point
+    #Diary 처리
     
-    #탄소등급 이미지
-    acc = point.accumulated_point 
-    
-    
+    contents = Diary.objects.filter(userid=pk)
+    contents_all = Diary.objects.all().order_by('-id')
+ 
+    #하루 달성 이미지
+    day_cnt = 0
+    today = DateFormat(datetime.now()).format('Ymd')
+    for dd in diary:
+        day = str(dd.create_at.year) + str(dd.create_at.month) + str(dd.create_at.day)
+        if day == today:
+            if dd.cat_selected == "tumbler":
+                day_cnt+=1
+            elif dd.cat_selected == "bag":
+                day_cnt+=1
+            else:
+                day_cnt+=1
+                
     context={
         'one':one,
         'point':point,
         'savePoint':savePoint,
-        'acc':acc
+        'contents': contents,
+        'contents_all': contents_all,
+        'acc':acc,
+        'day_cnt':day_cnt
     }
     return render(request, "topics/main.html", context)
 
