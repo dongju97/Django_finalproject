@@ -483,7 +483,20 @@
   </div>
 </div>
 
-
+<div id="modal_juklib_button2" class="modal_overlay">
+  <div class="modal_window">
+      <div class="modal_title">
+          <div class="modal_title_side"></div>
+          <div>  </div>
+          <div class="modal_title_side">
+              <span id="close_modal_2" class="material-icons-outlined">
+                  확인
+              </span>
+          </div>
+      </div>
+     <div>장바구니 포인트 적립</div>
+  </div>
+</div>
 
  {% comment %}  {% endcomment %}
 	<div id="tab-3" class="tab-content">
@@ -541,6 +554,23 @@
         </div>
     </div>
   </div>
+
+  <div id="modal_juklib_button3" class="modal_overlay">
+    <div class="modal_window">
+        <div class="modal_title">
+            <div class="modal_title_side"></div>
+            <div>  </div>
+            <div class="modal_title_side">
+                <span id="close_modal_3" class="material-icons-outlined">
+                    확인
+                </span>
+            </div>
+        </div>
+       <div>장바구니 포인트 적립</div>
+    </div>
+  </div>
+
+
 {% comment %}  {% endcomment %}
 </div>
 
@@ -580,6 +610,21 @@
       document.body.style.overflowY = "hidden"; // 스크롤 없애기
   });
 
+  const modal_2 = document.getElementById("modal_juklib_button2");
+  const buttonAddFeed_2 = document.getElementById("juklib_button2");
+  buttonAddFeed_2.addEventListener("click", e => {
+      modal_2.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+  const modal_3 = document.getElementById("modal_juklib_button3");
+  const buttonAddFeed_3 = document.getElementById("juklib_button3");
+  buttonAddFeed_3.addEventListener("click", e => {
+      modal_3.style.display = "flex";
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
+  });
+
+
 
 
   
@@ -602,10 +647,24 @@
       document.body.style.overflowY = "visible";
   });
 
+  
+
 
   const buttonCloseModal_1 = document.getElementById("close_modal_1");
   buttonCloseModal_1.addEventListener("click", e => {
       modal_1.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal_2 = document.getElementById("close_modal_2");
+  buttonCloseModal_2.addEventListener("click", e => {
+      modal_2.style.display = "none";
+      document.body.style.overflowY = "visible";
+  });
+
+  const buttonCloseModal_3 = document.getElementById("close_modal_3");
+  buttonCloseModal_3.addEventListener("click", e => {
+      modal_3.style.display = "none";
       document.body.style.overflowY = "visible";
   });
 
