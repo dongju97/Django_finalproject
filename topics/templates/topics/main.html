@@ -108,29 +108,29 @@
                  
                   {% if acc > 60000%}
                     <div class="point" id="img_point">               
-                      <img src="{% static 'images/trees.png' %}" height="60px" width="70px"> 
+                      <img src="{% static 'images/trees.png' %}" height="100px" width="100px"> 
                     </div>
-                  {% endif %}
-                  {%  if acc > 45000 %}
+                  
+                  {%elif acc > 45000 %}
                   <div class="point" id="img_point">               
-                    <img src="{% static 'images/trees.png' %}" height="60px" width="70px"> 
+                    <img src="{% static 'images/trees.png' %}" height="100px" width="100px"> 
                   </div>
-                  {% endif %}
-                  {% if acc > 30000 %}
+                  
+                  {% elif acc > 30000 %}
                   <div class="point" id="img_point">               
                     <img src="{% static 'images/leaves.png' %}" height="60px" width="70px"> 
                   </div>
-                  {% endif %}
-                  {% if acc > 15000 %}
+                  
+                  {% elif acc > 15000 %}
                   <div class="point" id="img_point">               
                     <img src="{% static 'images/leaf.png' %}" height="60px" width="70px"> 
                   </div>
-                  {% endif %}
                   
+                  {% else %}
                   <div class="point" id="img_point">               
                     <img src="{% static 'images/seed.png' %}" height="60px" width="70px"> 
                   </div>
-                  
+                  {% endif %}
                 
                 
                 
