@@ -62,7 +62,7 @@
                 if(msg == '사용내역 없음'){
                   alert("적립가능한 포인트가 없습니다.")
                 }else if(msg=="텀블러"){
-
+                  point_modal(1)
                 }else{
                   alert("포인트가 적립되지 않았습니다.")
                 }
@@ -96,7 +96,7 @@
                 if(msg == '사용내역 없음'){
                   alert("적립가능한 포인트가 없습니다.")
                 }else if(msg=="장바구니"){
-
+                  point_modal(2)
                 }else{
                   alert("포인트가 적립되지 않았습니다.")
                 }
@@ -131,7 +131,7 @@
                 if(msg == '사용내역 없음'){
                   alert("적립가능한 포인트가 없습니다.")
                 }else if(msg=="다회용기"){
-
+                  point_modal(3)
                 }else{
                   alert("포인트가 적립되지 않았습니다.")
                 }
@@ -356,7 +356,7 @@
                         <img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:5px;" src="{% static 'images/question.png' %}">
                       </button>
                     </div>
-                    <div id="head_2">50P</div>
+                    <div id="head_2">{{c_cnt.0}}P</div>
                     <div id="head_3">
                       <button id="juklib_button1" class="inline" value="tumbler">적립</button>
                     </div>
@@ -369,8 +369,8 @@
                      
                     <div class="pyo">
                     <div class="pyo_1">
-                    <div class="title">이번주이용내역</div>
-                    <div class="count">{{count.0}}회</div>
+                    <div class="title">이번달 이용내역</div>
+                    <div class="count">{{m_cnt.0}}회</div>
                     </div>
                     <div class="pyo_1">
                     <div class="title">총 이용내역</div>
@@ -416,7 +416,7 @@
         
             <div id="juklib_text">
               <div id="modal_point">
-                50p
+                {{c_cnt.0}}P
               </div>
               <div>가 적립되었어요!</div>
             </div>
@@ -445,7 +445,7 @@
           <div class="hall_p">
             <div id="head_1">적립가능 포인트<button id="jang_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
             </button></div>
-              <div id="head_2">50P</div>
+              <div id="head_2">{{c_cnt.1}}P</div>
               <div id="head_3">
                 <button id="juklib_button2" class="inline" value="bag">적립</button>
               </div>
@@ -459,7 +459,7 @@
           <div class="pyo">
               <div class="pyo_1">
                   <div class="title">이번주이용내역</div>
-                  <div class="count">{{count.1}}회</div>
+                  <div class="count">{{m_cnt.1}}회</div>
               </div>
               <div class="pyo_1">
               <div class="title">총 이용내역</div>
@@ -519,7 +519,7 @@
                 <div class="hall_p">
                   <div id="head_1">적립가능 포인트<button id="da_img" class="inline" style="background-color:transparent; border:0px;"><img id="qu_img" style="width:25px; height:25px; margin-bottom:40px; margin-left:15px;" src="{% static 'images/question.png' %}">
                   </button></div>
-                    <div id="head_2">50P</div>
+                    <div id="head_2">{{c_cnt.2}}P</div>
                     <div id="head_3">
                       <button id="juklib_button3" class="inline" value="container">적립</button>
                     </div>
@@ -533,7 +533,7 @@
                 <div class="pyo">
                     <div class="pyo_1">
                         <div class="title">이번주이용내역</div>
-                        <div class="count">{{count.2}}회</div>
+                        <div class="count">{{m_cnt.2}}회</div>
                       </div>
                       <div class="pyo_1">
                       <div class="title">총 이용내역</div>
@@ -613,29 +613,40 @@
       document.body.style.overflowY = "hidden"; // 스크롤 없애기
   });
 
+  {% comment %} 모달 {% endcomment %}
+  function point_modal(n){
+      if(n =1){
 
-  const modal_1 = document.getElementById("modal_juklib_button1");
-  const buttonAddFeed_1 = document.getElementById("juklib_button1");
-  buttonAddFeed_1.addEventListener("click", e => {
-      modal_1.style.display = "flex";
-      document.body.style.overflowY = "hidden"; // 스크롤 없애기
-  });
+      
+        const modal_1 = document.getElementById("modal_juklib_button1");
+        const buttonAddFeed_1 = document.getElementById("juklib_button1");
+        buttonAddFeed_1.addEventListener("click", e => {
+            modal_1.style.display = "flex";
+            document.body.style.overflowY = "hidden"; // 스크롤 없애기
+        });
+      }else if(n=2){
 
-  const modal_2 = document.getElementById("modal_juklib_button2");
-  const buttonAddFeed_2 = document.getElementById("juklib_button2");
-  buttonAddFeed_2.addEventListener("click", e => {
-      modal_2.style.display = "flex";
-      document.body.style.overflowY = "hidden"; // 스크롤 없애기
-  });
+      
 
-  const modal_3 = document.getElementById("modal_juklib_button3");
-  const buttonAddFeed_3 = document.getElementById("juklib_button3");
-  buttonAddFeed_3.addEventListener("click", e => {
-      modal_3.style.display = "flex";
-      document.body.style.overflowY = "hidden"; // 스크롤 없애기
-  });
+        const modal_2 = document.getElementById("modal_juklib_button2");
+        const buttonAddFeed_2 = document.getElementById("juklib_button2");
+        buttonAddFeed_2.addEventListener("click", e => {
+            modal_2.style.display = "flex";
+            document.body.style.overflowY = "hidden"; // 스크롤 없애기
+        });
+      }else{
+
+      
 
 
+        const modal_3 = document.getElementById("modal_juklib_button3");
+        const buttonAddFeed_3 = document.getElementById("juklib_button3");
+        buttonAddFeed_3.addEventListener("click", e => {
+            modal_3.style.display = "flex";
+            document.body.style.overflowY = "hidden"; // 스크롤 없애기
+        });
+      }
+  }
 
 
   
