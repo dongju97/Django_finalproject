@@ -40,6 +40,7 @@ def feed(request):
         image = request.FILES['image']
         userid = request.POST.get('pk')
         diary = Diary(userid=userid, comment = comment, image = image, cat_selected=sel_cat)
+        context = {}
         diary.save()
 
         uploaded_img_qs = Diary.objects.filter().last()

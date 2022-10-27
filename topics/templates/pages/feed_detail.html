@@ -84,7 +84,7 @@ localStorage.pk
       <div class="navbar" style="background-color: rgba(195, 219, 200, 0.107);">
               <button id="back_button" class="inline"><img src="{% static 'images/뒤로가기.png' %}" width="27" height="70" onclick="back()"></button>
               {% comment %} <button id="pencil_button" class="inline"><img src="{% static 'images/pencil.png' %}" width="60" height="60"></button> {% endcomment %}
-              <button id="menu_button" class="inline" onclick="location.href='{% url 'topics:main' id %}'"><img src="{% static 'images/홈.png' %}" width="100" height="100"></button>
+              <button id="menu_button" style="margin-right:35px;" class="inline" onclick="location.href='{% url 'topics:main' id %}'"><img src="{% static 'images/홈.png' %}" width="90" height="90"></button>
 
       </div>        
   </nav>
@@ -92,7 +92,7 @@ localStorage.pk
 
       <div style="background-color: rgba(195, 219, 200, 0.107);">
         <div class="title">
-          <div style="width:90%; margin-left:40px">
+          <div style="width:90%; margin-left:40px; font-weight:bolder; padding-left:20px; font-size:45px;">
             {{detail.cat_selected}}
             사용
           </div>
@@ -105,15 +105,19 @@ localStorage.pk
         </div>
         <div id="day">
           {{ detail.create_at|date:'Y.m.d A H:i' }}
-          <div id="icon2" style="float:right;">
+          <div id="icon2" style="float:right; margin-right:35px;">
             <i class="bi-heart" style="font-size:3rem; color: red; cursor: pointer;"></i>
-            &nbsp
-            <i class="bi bi-box-arrow-up" style="font-size:3rem;"></i>
+            &nbsp&nbsp&nbsp
+            <i class="bi bi-box-arrow-up" style="font-size:3rem;" onclick="ins()"></i>
           </div>
           <script>
 
+            function ins(){
+              location.href="https://www.instagram.com/";
+            }
+
             var i = 0;
-            $('i').on('click',function(){
+            $('.bi-heart').on('click',function(){
                 if(i==0){
                     $(this).attr('class','bi-heart-fill');
                     i++;
