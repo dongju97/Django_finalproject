@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base_pen.html' %}
 {% load static %}
 {% block content %}
-
 
 <head>
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
@@ -11,7 +10,7 @@
 </head>
 
 
-<body>
+<body style="" >
 
 
     <div id="box">
@@ -20,7 +19,17 @@
             <div id="second">
                 <div id="a">나의 탄소 등급</div>
                 <div id="b">
-                    <img src="{% static 'images/새싹.png' %}" height="120px" width="140px">
+                    {% if acc_point > 60000%}               
+                      <img src="{% static 'images/trees.png' %}" height="100px" width="100px"> 
+                    {% elif acc_point > 45000%}               
+                      <img src="{% static 'images/tree.png' %}" height="100px" width="100px"> 
+                    {% elif acc_point > 30000%}               
+                      <img src="{% static 'images/leaves.png' %}" height="100px" width="100px"> 
+                    {% elif acc_point > 15000%}               
+                      <img src="{% static 'images/leaf.png' %}" height="100px" width="100px"> 
+                    {% else %}
+                    <img src="{% static 'images/seed.png' %}" height="100px" width="100px"> 
+                    {% endif %}
                 </div>
             </div>
 
@@ -142,7 +151,5 @@
 
 
 </body>
-
-
 
 {% endblock content %}

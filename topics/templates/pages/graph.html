@@ -1,6 +1,6 @@
-{% extends 'base_pen.html' %}
+
 {% load static %}
-{% block content %}
+
 
 
 <head>
@@ -19,7 +19,64 @@
     font-size: 35px;
     box-shadow: 2px 2px 13px rgb(220, 218, 218);
     }
+    
+      
+    *{
+        font-family: 'NanumSquareRound',sans-serif;
+      }
+
+      .navbar {
+          display: flex;
+          {% comment %} justify-content: center; {% endcomment %}
+          {% comment %} position: fixed; {% endcomment %}
+          width: 100%;
+          background-color: transparent;
+          /* border-bottom: solid 1px rgb(202, 202, 202); */
+        }
+  
+      .navbar-search {
+          width: 300px;
+          font-size: 14px;
+        }
+
+      #menu_button {
+          margin-top: 40px;
+          background-color: transparent;
+            border : 0;
+          padding-left: 15px;
+          }
+      
+      #back_button {
+          margin-top: 40px;
+          background-color: transparent;
+          border : 0;
+          padding-left: 50px;
+          }   
+
+      #home_button {
+          margin-top: 40px;
+          background-color: transparent;
+          border : 0;
+          padding-left: 122px;
+      }
+      
+      #pencil_button {
+          margin-top: 40px;
+          background-color: transparent;
+          border : 0;
+          padding-left: 600px;
+      }
+      .body {
+
+        margin: none;
+        width: 980px;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        
+      }
      
+ 
     </style>
 
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
@@ -64,7 +121,7 @@
                 if(msg == '사용내역 없음'){
                   alert("적립가능한 포인트가 없습니다.")
                 }else if(msg=="텀블러"){
-                  n=1
+                  point_modal(1)
                 }else{
                   alert("포인트가 적립되지 않았습니다.")
                 }
@@ -153,11 +210,29 @@
               });
     </script>
 
-    
+    <script>
+
+
+      const back = () =>{
+        window.history.back();
+      }
+  
+    </script>
 </head>
 
 
 <body>
+
+  <nav class="navbar" style="background-color: rgba(195, 219, 200, 0.107);">
+
+    <div class="navbar" style="background-color: rgba(195, 219, 200, 0.107);">
+            <button id="back_button" class="inline"><img src="{% static 'images/뒤로가기.png' %}" width="27" height="70" onclick="back()"></button>
+            {% comment %} <button id="pencil_button" class="inline"><img src="{% static 'images/pencil.png' %}" width="60" height="60"></button> {% endcomment %}
+            <button id="menu_button" style="margin-right:35px;" class="inline" onclick="location.href='{% url 'topics:main' user.userid %}'"><img src="{% static 'images/홈.png' %}" width="90" height="90"></button>
+
+    </div>        
+</nav>
+
   {% comment %} <div id="add_feed" style="font-size:30px;">안녕</div> {% endcomment %}
   <div id="aaaaa">
     <figure class="highcharts-figure">
@@ -546,7 +621,7 @@
         
                 <div class="pyo">
                     <div class="pyo_1">
-                        <div class="title">이번주이용내역</div>
+                        <div class="title">이번달 이용내역</div>
                         <div class="count">{{m_cnt.2}}회</div>
                       </div>
                       <div class="pyo_1">
@@ -580,7 +655,7 @@
     </div>
   </div>
 
-  <div id="modal_juklib_button3" class="modal_overlay">
+  {% comment %} <div id="modal_juklib_button3" class="modal_overlay">
     <div class="modal_window_coin">
       <div id="juklib_modal_content">
           <img id="coin_img" src="{% static 'images/coin.gif' %}">
@@ -605,7 +680,7 @@
 
     </div>
   </div>
-
+ {% endcomment %}
 
 {% comment %}  {% endcomment %}
 </div>
@@ -720,6 +795,6 @@
 </body>
 
 
-{% endblock content %}
+
 
 

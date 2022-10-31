@@ -6,7 +6,7 @@ from itertools import accumulate
 from logging import exception
 import json
 from multiprocessing import context
-from re import X
+from re import M,X
 from django.shortcuts import render, redirect
 from . models import User
 from . models import UserSummary
@@ -26,11 +26,50 @@ def graph(request,pk):
     bag = user.bag
     con = user.container
     
+    #적립가능한 물품 불러오기
+    diary = Diary.objects.filter(userid = pk).exclude(acc_bool = True)
+   
+    t=0
+    c=0
+    b=0
+    for i in diary:       
+        if i.cat_selected =="tumbler":
+            t+=1
+        elif i.cat_selected=="container":
+            c+=1
+        else:
+            b+=1
+         
+    #한달동안 쓴 내역 불러오기
+    d_list = Diary.objects.filter(userid=pk)
+    
+    #이번달 이용내역
+    month = DateFormat(datetime.now()).format('Ym')
+    m_c=0
+    m_b=0
+    m_t =0
+    
+    for d in d_list:
+        mth = str(d.create_at.year)+str(d.create_at.month)
+        
+        if mth == month:
+            if d.cat_selected =="tumbler":
+                m_t+=1
+            elif d.cat_selected =="container":
+                m_c+=1
+            else:
+                m_b+=1
+
+            
+    #물품 개수
     context={
         'user':user,
         'count':[tum, bag, con],
-        'save':[tum*50, bag*32, con*200]
-    }
+        'save':[tum*50, bag*32, con*200],
+        'point':[tum * 20, bag * 10, con * 30],#물품 포인트
+        'c_cnt':[t*20,b*10,c*30],#적립가능한 물품 
+        'm_cnt':[m_t, m_b, m_c]
+        }
     return render(request, "pages/graph.html",context)
 
 def feed(request):
@@ -57,21 +96,30 @@ def feed(request):
         
         labels = results.pandas().xyxy[0]['name']
 
+         #UserSummary에 저장하기
+        user = UserSummary.objects.get(userid=userid)
+        
+        
         for label in labels:
             if label == sel_cat:
                 if sel_cat == 'tumbler':
                     sel_cat = '텀블러'
-                elif sel_cat == 'bag':
+                    user.tumbler+=1
+                elif sel_cat == 'shopping bag':
                     sel_cat = '장바구니'
+                    user.bag +=1
                 elif sel_cat == 'container':
                     sel_cat = '다회용기'
-                
+                    user.container +=1
+                    
                 context = {
                     'com': comment,
                     'image': uploaded_img_qs.image.url,
                     'sel_cat': sel_cat,
+                    'userid':userid
                 }
-                return render(request, 'pages/feed.html', context)
+                user.save()
+                return redirect('topics:feed_detail', diary.id)
 
         Diary.objects.filter().last().delete()
         
@@ -102,6 +150,10 @@ def point(request,pk):
 
 def save(request,pk):
     user = UserSummary.objects.get(userid = pk)
+    
+    #누적포인트
+    acc_point = user.accumulated_point
+    
     diary = Diary.objects.filter(userid = pk)
     
     tumbler = user.tumbler * 50
@@ -117,10 +169,10 @@ def save(request,pk):
         if day == today:
             if dd.cat_selected == "tumbler":
                 today_g += 50
-            elif dd.cat_selected == "bag":
-                today_g += 32
+            elif dd.cat_selected == "container":
+                today_g += 200
             else:
-                today_g +=200
+                today_g += 32
         
     context={
         'user':user,
@@ -129,7 +181,8 @@ def save(request,pk):
         'bag':bag,
         'acc':acc,
         'today_g':today_g,
-        'diary':diary           
+        'diary':diary,
+        'acc_point':acc_point         
     }
     
     return render(request, "pages/save.html",context)
@@ -183,7 +236,7 @@ def main(request, pk):
         if day == today:
             if dd.cat_selected == "tumbler":
                 day_cnt+=1
-            elif dd.cat_selected == "bag":
+            elif dd.cat_selected == "container":
                 day_cnt+=1
             else:
                 day_cnt+=1
@@ -236,6 +289,9 @@ def signup(request):
 @csrf_exempt
 def getPoint(request):
     kind = request.POST.get('kind')
+    if kind == "bag":
+        kind = "shopping bag"
+        
     pk = request.POST.get('pk')
     
     
@@ -261,7 +317,7 @@ def getPoint(request):
             point.tumbler +=1
             msg = "텀블러"
             
-        elif kind == "bag":
+        elif kind =="shopping bag":
             a = 10
             b = "장바구니 사용 적립"
             point.bag +=1
@@ -281,10 +337,11 @@ def getPoint(request):
         point.accumulated_point += a
         point.used_point += a
         point.save()
-        # print(i['acc_bool'])
         i.acc_bool = True
         i.save()
 
+     
+        
     
     context ={
         'msg':msg

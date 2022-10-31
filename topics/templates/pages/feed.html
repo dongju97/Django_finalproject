@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <style>
-    {% block css %}{% endblock css %}
+    
       *{
         font-family: 'NanumSquareRound',sans-serif;
       }
@@ -70,12 +70,12 @@
   </style> 
 </head>
 <script>
-localStorage.pk
+
 
   const back = () =>{
     window.history.back();
   }
-
+  
 </script>
 
 <body >
@@ -101,7 +101,7 @@ localStorage.pk
         </div>
       </div>
       <div id="photo" class='container text-center'>
-        <img class="img-fluid" src="{{detail.image.url}}" style='height: 980px; overflow: hidden;'>
+        <img class="img-fluid" src="{{detail.image.url}}" style=' overflow: hidden;'>
       </div>
       <div id="day">
         {{ detail.create_at|date:'Y.m.d A H:i' }}
@@ -122,7 +122,7 @@ localStorage.pk
                   i++;
               }else if(i==1){
                   $(this).attr('class','bi-heart');
-                  i—;
+                  i—-;
               }
           });
          
